@@ -1,0 +1,285 @@
+*
+:root {
+    margin:0;
+    padding: 0;
+    font-size: 10px;
+}
+
+
+body{
+    padding: 0;
+    margin: 0;
+    color: #000;
+    background: #e9e9e9;
+
+    font-family: Poppins;
+    letter-spacing: 1px;
+}
+
+main{
+    margin-left: 5rem;
+    padding: 1rem;
+
+}
+
+.main-container{
+    position: relative;
+    width: 100%;
+    height: 1005px;
+    margin: 0 auto;
+}
+
+
+
+
+
+
+.flex-container{
+    position: fixed;
+    display: flex;
+    width: 5rem;
+    height: 1005px;
+    padding: 0;
+    background: blueviolet;
+    transition: 2s;
+
+}
+
+
+
+.popup-nav{
+    margin: 0;
+    width: 5rem;
+    height: 100vh;
+    position: fixed;
+    background-color: #bd2828;
+    transition: 1s ease;
+
+    font-size: 1.2rem;
+
+}
+
+.navbar-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo img{
+    position: relative;
+    margin: 10px 0 0 5px;
+    padding-left: 0;
+    max-width:100%;
+    width: 90%;
+    height: auto;
+
+    transform: scale(1,1);
+}
+
+.nav-item {
+    width: 100%;
+    margin: 0 0 0 10px;
+    padding: 0 5px;
+}
+.nav-item:hover{
+    background: #d8574b;
+    color: rgb(182, 182, 182);
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    height: 6rem;
+    color: #fff;
+    text-decoration: none;
+    transition: 2s;
+}
+
+.nav-text {
+    display: none;
+    margin-left: 5px;
+
+    transition: 2s;
+
+}
+
+.nav-link ion-icon{
+    font-size: 1.5rem;
+    min-width: 2rem;
+    margin: 0 1rem;
+}
+
+.popup-nav:hover {
+    width: 16rem;
+}
+
+.popup-nav:hover .nav-text {
+    display: block;
+}
+
+
+
+
+
+
+
+.right-container{
+    margin-left: 5rem;
+    width: cal(100%-5rem);
+    height: 100%;
+    max-height: 5000px;
+
+    transition: .5s;
+}
+.profile-header{
+    padding: 10px 20px;
+    background: #f6bd60;
+    box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.2);
+}
+.profile-header span{
+    margin: 0 30px;
+    font-size: 2rem;
+
+}
+
+.profile-container{
+    width: max(50%,cal(100%-5rem));
+    height: 900px;
+    margin: 5px 0;
+    padding: 30px;
+    background: #e9e9e9;
+}
+.name{
+    width: cal(100%-5rem);
+    margin: 0 10px 30px;
+
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+}
+.top-design{
+    width: 100%;
+    height: 13rem;
+    margin: 0 0 100px 0;
+    background: linear-gradient(70deg, #bd2828, #f6bd60);
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+.profile-pic{
+    position: absolute;
+    left: 14%;
+    top: 17%;
+    width: 15rem;
+    height: 15rem;
+
+    border: solid 10px #fff;
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover
+}
+
+.profile-name{
+    margin: 0 50px;
+    font-size: 5rem;
+}
+.contact-container{
+    margin: 0 10px;
+    padding: 10px;
+    background: #fff;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+
+}
+ul{
+    list-style: none;
+}
+
+
+
+.flex-personal-info{
+    margin: 50px 0  ;
+    width: cal(100%-5rem);
+    display: flex;
+    justify-content: space-between;
+
+    flex-wrap: wrap;
+
+}
+.peronal-info-container{
+    width: 40%;
+    display: flex;
+    margin: 0 10px;
+    padding: 20px 40px;
+    justify-content:start;
+    flex-direction: column;
+
+    flex-grow: 1;
+
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+}
+.peronal-exp-container{
+    width: 40%;
+    display: flex;
+    margin: 0 10px;
+    padding: 20px 40px;
+    justify-content:start;
+    flex-direction: column;
+
+    flex-grow: 1;
+
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+}
+.resume{
+    margin: 20px 0 0;
+    padding: 10px;
+    border: none;
+    color: #fff;
+    background: #bd2828;
+    border-radius: 5px;
+}
+.resume:hover{
+    background: #cc3737;
+    cursor: pointer;
+}
+.info-container{
+    display: flex;
+    margin: 10px 0 0;
+    background: #fff;
+}
+.profile-info-h1{
+    font-size: 1.5rem;
+}
+.profile-info{
+    margin: 0 10px;
+}
+
+
+.flex-edit{
+    display: flex;
+    justify-content: end;
+}
+.edit-container{
+    margin: 0 10px;
+    padding: 20px 40px;
+}
+.edit-container button{
+    padding: 10px;
+
+    color: #fff;
+    border: 0;
+    background: #bd2828;
+    border-radius: 5px;
+
+    cursor: pointer;
+}
+.edit-container button:hover{
+    background: #e04747;
+}

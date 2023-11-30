@@ -1,0 +1,163 @@
+<html>
+    <head>
+        <title>Dermatologist</title>
+        <link rel="stylesheet" type="text/css" href="employee-edit.css">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://kit.fontawesome.com/8a0bbee573.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&family=Patua+One&family=Poppins:wght@500&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div class="main-container">
+            <div class="header"></div>
+            <div class="flex-container">
+                <div class="popup-nav">
+                    <div class="logo">
+                        <img src="JobPortal Logo Emblem.png" alt="Cosmedic">
+                    </div>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a href="employee-profile.html" class="nav-link">
+                                <ion-icon name="person-circle-outline"></ion-icon>
+                                <span class="nav-text">Profile</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="employee-jobs.html" class="nav-link">
+                                <ion-icon name="briefcase-outline"></ion-icon>
+                                <span class="nav-text">Jobs</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="employee-notif.html" class="nav-link">
+                                <ion-icon name="notifications-outline"></ion-icon>
+                                <span class="nav-text">Notification</span>
+                            </a>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="right-container">
+                
+                <div class="edit-container">
+                    <div class="flex-edit">
+                        <div class="edit">
+                        <span class="profile-edit">Edit Profile</span>
+                        </div>
+                        
+                        <div class="flex-edit-info">
+
+                            <div class="edit-info-top">
+                                <div class="info-top-right">
+                                    <span class="edit-info-h1">Personal Bio</span>
+                                    <div class="info-container">
+                                        <span class="edit-info-h2">Name: </span>
+                                        <input type="text" class="info-top" placeholder="Full Name"></input>
+                                    </div>
+                                    <div class="info-container">
+                                        <span class="edit-info-h2">Address: </span>
+                                        <input type="text" class="info-top" placeholder="No./Street/Barangay/Municipality/Province"></input>
+                                    </div>
+                                    <div class="info-container">
+                                        <span class="edit-info-h2">Mobile Number: </span>
+                                        <input type="text" class="info-top" placeholder="(000)-0000-0000"></input>
+                                    </div>
+                                    <div class="info-container">
+                                        <span class="edit-info-h2">Email: </span>
+                                        <input type="text" placeholder="@gmail, @yahoo, @hotmail etc." class="info-top"></input>
+                                    </div> 
+                                </div>
+                                <div class="info-top-right">
+                                    <div class="profile-pic">
+                                        <span class="edit-info-h1" >Change Profile</span>
+                                        <div class="pic-container">
+                                            <ion-icon name="person-sharp" class="picture"></ion-icon>
+                                            <input type="submit" class="pic-btn" value="Change Profile">
+                                        </div>
+                                        <input type="submit" class="resume" value="Update Resume"></input>
+                                    </div>
+                                </div>  
+                            </div>
+
+                            <div class="flex-info-bottom">
+                                <div class="edit-info-container">
+                                    <span class="edit-info-h1">Personal Bio</span>
+                                    <div class="info-container">
+                                        <span class="edit-info-h2">Birthday: </span>
+                                        <input type="date"class="edit-info1" placeholder="dd/mm/yyyy"></input>
+                                    </div>
+                                    <div class="info-container">
+                                        <span class="edit-info-h2">Age: </span>
+                                        <input type="text" class="edit-info" placeholder="Years old"></input>
+                                    </div>
+                                    <div class="info-container">
+                                        <span class="edit-info-h2">Citizenship: </span>
+                                        <input type="text" placeholder="ex. Filipino" class="edit-info"></input>
+                                    </div>
+                                    <div class="info-container">
+                                        <span class="edit-info-h2">Civil Status: </span>
+                                        <select name="civil" id="" class="edit-info1">
+                                            <option value="single">Single</option>
+                                            <option value="maried">Maried</option>
+                                            <option value="widowed">Widowed</option>
+                                        </select>
+                                    </div>    
+                                    <div class="flex-sex info-container">
+                                        <span class="sex edit-info-h2">Sex: </span>
+                                        <input type="radio" id="male" value="male" name="gender" class="edit-info">
+                                        <label for="male">Male</label>
+                                        <input type="radio" id="female" value="female" name="gender" class="edit-info">
+                                        <label for="female">Female</label>
+                                    </div>
+                                </div>
+                            <div class="edit-info-container">
+                                <span class="edit-info-h1">Professional Experience</span>
+                                <div class="info-container">
+                                    <span class="edit-info-h2">Current Company: </span>
+                                    <input type="text" class="edit-info"></input>
+                                </div>
+                                <div class="info-container">
+                                    <span class="edit-info-h2">Field Of Experties: </span>
+                                    <input type="text" class="edit-info"></input>
+                                </div>
+                                <div class="info-container">
+                                    <span class="edit-info-h2">Years of Experience: </span>
+                                    <input type="number" class="edit-info"></input>
+                                </div>
+                                <a href="derma-profile.html">
+                                    <input type="submit" class="resume" value="Update Resume"></input>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                        <div class="flex-button">
+                            <div class="edit-button-container">
+                                <a href="employee-profile.html">
+                                    <input type="submit" class="edit" value="Done"></input>
+                                </a>
+                                <a href="employee-profile.html">
+                                    <button class="edit">Cancel</button>
+                                </a>
+                            </div>
+                        </div>
+
+
+                </div>
+                    
+                    
+            </div>
+
+        </div>
+
+
+        
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+        
+        
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@4.0.1/dist/chart.umd.min.js"></script>
+        <script src="newmember-chart.js"></script>
+        <script src="earning-chart.js"></script>
+    </body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cosmedic</title>
+    <link rel="stylesheet" type="text/css" href="signup-style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<script src="city.js"></script>
+<script src="https://kit.fontawesome.com/8a0bbee573.js" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&family=Patua+One&family=Poppins:wght@500&display=swap" rel="stylesheet">
+
+<script>	
+    window.onload = function() {	
+    
+        // ---------------
+        // basic usage
+        // ---------------
+        var $ = new City();
+        $.showProvinces("#province");
+        $.showCities("#city");
+    
+        // ------------------
+        // additional methods 
+        // -------------------
+    
+        // will return all provinces 
+        console.log($.getProvinces());
+        
+        // will return all cities 
+        console.log($.getAllCities());
+        
+        // will return all cities under specific province (e.g Batangas)
+        console.log($.getCities("Batangas"));	
+        
+    }
+    </script>
+
+</head>
+<body>
+    <section>
+        <header>
+            <img class="logo" src="JobPortal Logo Emblem.png" alt="logo">
+             </header>
+
+        <div class="bg-container">
+            <div class="container">
+                <div>
+                    <a href="home.html"><button class="back"><ion-icon name="close-circle-outline"></ion-icon></button></a>
+                </div>
+                <div class="container-left">
+                    <div class="social-container">
+                        <section>
+                            <h1>Sign up</h1>
+                        </section>
+                    </div>
+                    <div class="info">
+                        <form action="" method="post">
+                        <label>Full Name</label><br>
+                        <input type="text" class="name" name="name" placeholder="Full Name"><br>
+                        <label>Email</label><br>
+                        <input type="text" class="email" name="email" placeholder="Email"><br>
+                        <label>Phone Number</label><br>
+                        <input type="number" class="number" name="number" placeholder="+63*********"><br>
+                        <label>Province</label><br>
+                        <select class="loc-derma" id="province"></select>
+                        <label>Municipality</label><br>
+                        <select class="loc-derma" id="city"></select>
+                        <label>What are You?</label><br>
+                        <select class="user-derma">
+                            <option value="user"> Applicant</option>
+                            <option value="derma"> Employer</option>
+                        </select>
+                        <label>Password</label><br>
+                        <input type="password" class="pass" name="password" placeholder="Password"><br>
+                        <label>Confirm Password</label><br>
+                        <input type="password" class="confirm" name="cpassword" placeholder="Confirm Password"><br>
+                          
+                        
+                    </div>
+                    <div class="check-container">
+                        <input type="checkbox" class="check">
+                        <p>I agree with all the <span>Terms</span>, <span>Privacy Policy</span> and <span>Fees</span></p>
+                    </div>
+
+                    <div class = "signup-container">
+                        <input type="submit" class="form-btn" name="signUp" placeholder="Sign Up"><br>
+                     </div> 
+
+                     <div class ="login">
+                            Already a Member? <a href="index.html">Login</a>
+                         </div>
+
+                     
+                    
+                </div>
+                <div class="container-right">
+                    <img src="JobPortal Logo Mix.png" alt="JobSipat Logo">
+                </div>
+            </div>
+        </div>
+        </form>
+    </section>
+</body>
+</html>
