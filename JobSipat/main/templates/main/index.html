@@ -3,31 +3,28 @@
 <head>
     <title>Job Portal</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/login-style.css' %}">
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<script src="https://kit.fontawesome.com/8a0bbee573.js" crossorigin="anonymous"></script>
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&family=Patua+One&family=Poppins:wght@500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://kit.fontawesome.com/8a0bbee573.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&family=Patua+One&family=Poppins:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
     <section>
-
         <header>
-        <img class="logo" src="{% static 'img/JobPortal Logo Mix.png' %}" alt="logo">
-        <a href="login.html"><i class="fa-solid fa-user"></i></a>
-         </header>
-
+            <img class="logo" src="{% static 'img/JobPortal Logo Mix.png' %}" alt="logo">
+            <a href="login.html"><i class="fa-solid fa-user"></i></a>
+        </header>
         <div class="bg-container">
             <div class="container">
                 <div>
-                    <a href="home.html"><button class="back"><ion-icon name="close-circle-outline"></ion-icon></button></a>
+                    <a href="home"><button class="back"><ion-icon name="close-circle-outline"></ion-icon></button></a>
                 </div>
                 <div class="container-left">
                     <div class="social-container">
                         <section>
                             <h1>Login</h1>
                         </section>
-                        <form action="signup.php" method="post">
+                        <form action="signup" method="post">
                         <div class="social-button">
                             <button type="button" class="fbook">
                                 <span class="fbookIcon"><ion-icon name="logo-facebook"></ion-icon></span>
@@ -56,7 +53,6 @@
                             </div>
                         </div>
                         
-
                         <div class="login-container">
                             <button  type="button" class="login">
                                 <span class="loginTxt">Login</span>
@@ -64,7 +60,7 @@
                         </div>
 
                         <div class="signup">
-                        Don't have an account? <a href="Signup.html"> SignUp </a>
+                        Don't have an account? <a href="Signup"> SignUp </a>
                         </div>
 
                     </div>

@@ -3,50 +3,22 @@
 <html>
 <head>
     <title>Cosmedic</title>
-    <link rel="stylesheet" type="text/css" href="signup-style.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/signup-style.css' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<script src="city.js"></script>
-<script src="https://kit.fontawesome.com/8a0bbee573.js" crossorigin="anonymous"></script>
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&family=Patua+One&family=Poppins:wght@500&display=swap" rel="stylesheet">
-
-<script>	
-    window.onload = function() {	
-    
-        // ---------------
-        // basic usage
-        // ---------------
-        var $ = new City();
-        $.showProvinces("#province");
-        $.showCities("#city");
-    
-        // ------------------
-        // additional methods 
-        // -------------------
-    
-        // will return all provinces 
-        console.log($.getProvinces());
-        
-        // will return all cities 
-        console.log($.getAllCities());
-        
-        // will return all cities under specific province (e.g Batangas)
-        console.log($.getCities("Batangas"));	
-        
-    }
-    </script>
-
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="city.js"></script>
+    <script src="https://kit.fontawesome.com/8a0bbee573.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&family=Patua+One&family=Poppins:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
     <section>
         <header>
-            <img class="logo" src="JobPortal Logo Emblem.png" alt="logo">
-             </header>
-
+            <img class="logo" src="{% static 'img/JobPortal Logo Emblem.png' %}" alt="logo">
+        </header>
         <div class="bg-container">
             <div class="container">
                 <div>
-                    <a href="home.html"><button class="back"><ion-icon name="close-circle-outline"></ion-icon></button></a>
+                    <a href="home"><button class="back"><ion-icon name="close-circle-outline"></ion-icon></button></a>
                 </div>
                 <div class="container-left">
                     <div class="social-container">
@@ -85,14 +57,11 @@
 
                     <div class = "signup-container">
                         <input type="submit" class="form-btn" name="signUp" placeholder="Sign Up"><br>
-                     </div> 
+                    </div> 
 
-                     <div class ="login">
+                    <div class ="login">
                             Already a Member? <a href="index.html">Login</a>
-                         </div>
-
-                     
-                    
+                    </div>  
                 </div>
                 <div class="container-right">
                     <img src="JobPortal Logo Mix.png" alt="JobSipat Logo">
@@ -101,5 +70,30 @@
         </div>
         </form>
     </section>
+    <script>	
+        window.onload = function() {	
+        
+            // ---------------
+            // basic usage
+            // ---------------
+            var $ = new City();
+            $.showProvinces("#province");
+            $.showCities("#city");
+        
+            // ------------------
+            // additional methods 
+            // -------------------
+        
+            // will return all provinces 
+            console.log($.getProvinces());
+            
+            // will return all cities 
+            console.log($.getAllCities());
+            
+            // will return all cities under specific province (e.g Batangas)
+            console.log($.getCities("Batangas"));	
+            
+        }
+    </script>
 </body>
 </html>
