@@ -1,7 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 <head>
-    <title>Job Portal</title>
+    <title>Login</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/login-style.css' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,46 +24,35 @@
                         <section>
                             <h1>Login</h1>
                         </section>
-                        <form action="signup" method="post">
-                        <div class="social-button">
-                            <button type="button" class="fbook">
-                                <span class="fbookIcon"><ion-icon name="logo-facebook"></ion-icon></span>
-                                <span class="fbookTxt">Facebook</span>
-                            </button><br>
-                            <button  type="button" class="google">
-                                <span class="googleIcon"><ion-icon name="logo-google"></ion-icon></span>
-                                <span class="googleTxt">Google</span>
-                            </button>
-                            <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-                            <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-                        </div>
                     </div>
-                    <div class="login-info"> 
-                        <label class="info-label">Email</label><br>
-                        <input type="text" class="info" placeholder="Email"><br>
-                        <label class="info-label">Password</label><br>
-                        <input type="password" class="info" placeholder="Password"><br>
-
-                        <div class="cf-container">
-                            <div class="checkbox-container">
-                                <input type="checkbox" class="check"><label>Remember me</label></input>
+                    <form action="{% url 'home' %}" method="post">
+                        {% csrf_token %}
+                        <div class="login-info"> 
+                            <label class="info-label">Email</label><br>
+                            {{ form.email }}
+                            <label class="info-label">Password</label><br>
+                            {{ form.password }}
+    
+                            <div class="cf-container">
+                                <div class="checkbox-container">
+                                    <input type="checkbox" class="check"><label>Remember me</label></input>
+                                </div>
+                                <div class="forgot-container">
+                                    <label class="forgot-pass">Forgot Password?</label> 
+                                </div>
                             </div>
-                            <div class="forgot-container">
-                                <label class="forgot-pass">Forgot Password?</label> 
+                            
+                            <div class="login-container">
+                                <button  type="submit" class="login">
+                                    <span class="loginTxt">Login</span>
+                                </button>
+                            </div>
+    
+                            <div class="signup">
+                                Don't have an account? <a href="{% url 'signup' %}"> SignUp </a>
                             </div>
                         </div>
-                        
-                        <div class="login-container">
-                            <button  type="button" class="login">
-                                <span class="loginTxt">Login</span>
-                            </button>
-                        </div>
-
-                        <div class="signup">
-                        Don't have an account? <a href="Signup"> SignUp </a>
-                        </div>
-
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>

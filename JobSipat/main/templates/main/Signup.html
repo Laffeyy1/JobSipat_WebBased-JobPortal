@@ -2,11 +2,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Cosmedic</title>
+    <title>SignUp</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/signup-style.css' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <script src="city.js"></script>
+    <script src="{% static 'js/city.js' %}"></script>
     <script src="https://kit.fontawesome.com/8a0bbee573.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&family=Patua+One&family=Poppins:wght@500&display=swap" rel="stylesheet">
 </head>
@@ -27,44 +27,48 @@
                         </section>
                     </div>
                     <div class="info">
-                        <form action="" method="post">
-                        <label>Full Name</label><br>
-                        <input type="text" class="name" name="name" placeholder="Full Name"><br>
-                        <label>Email</label><br>
-                        <input type="text" class="email" name="email" placeholder="Email"><br>
-                        <label>Phone Number</label><br>
-                        <input type="number" class="number" name="number" placeholder="+63*********"><br>
-                        <label>Province</label><br>
-                        <select class="loc-derma" id="province"></select>
-                        <label>Municipality</label><br>
-                        <select class="loc-derma" id="city"></select>
-                        <label>What are You?</label><br>
-                        <select class="user-derma">
-                            <option value="user"> Applicant</option>
-                            <option value="derma"> Employer</option>
-                        </select>
-                        <label>Password</label><br>
-                        <input type="password" class="pass" name="password" placeholder="Password"><br>
-                        <label>Confirm Password</label><br>
-                        <input type="password" class="confirm" name="cpassword" placeholder="Confirm Password"><br>
-                          
-                        
+                        <form action="{% url 'signup' %}" method="post">
+                            {% csrf_token %}
+                            <label>First Name</label><br>
+                            {{ form.first_name }}
+                            <label>Last Name</label><br>
+                            {{ form.last_name }}
+                            <label>Userame</label><br>
+                            {{ form.username }}
+                            <label>Email</label><br>
+                            {{ form.email }}
+                            <label>Phone Number</label><br>
+                            {{ form.phone_number }}
+                            <label>Province</label><br>
+                            {{ form.province }}
+                            <label>Municipality</label><br>
+                            {{ form.municipality }}
+                            <label>What are You?</label><br>
+                            {{ form.user_type }}
+                            <label>Password</label><br>
+                            {{ form.password }}
+                            <label>Confirm Password</label><br>
+                            {{ form.confirm_password }}
+                            <div class="check-container">
+                                <input type="checkbox" class="check">
+                                <p>I agree with all the <span>Terms</span>, <span>Privacy Policy</span> and <span>Fees</span></p>
+                            </div>
+                            {% if form.errors %}
+                                <div class="alert alert-danger">
+                                    {{ form.errors }}
+                                </div>
+                            {% endif %}
+                            <div class = "signup-container">
+                                <input type="submit" class="form-btn" name="signUp" placeholder="Sign Up"><br>
+                            </div> 
+                        </form>
                     </div>
-                    <div class="check-container">
-                        <input type="checkbox" class="check">
-                        <p>I agree with all the <span>Terms</span>, <span>Privacy Policy</span> and <span>Fees</span></p>
-                    </div>
-
-                    <div class = "signup-container">
-                        <input type="submit" class="form-btn" name="signUp" placeholder="Sign Up"><br>
-                    </div> 
-
                     <div class ="login">
-                            Already a Member? <a href="index.html">Login</a>
+                            Already a Member? <a href="{% url 'index' %}">Login</a>
                     </div>  
                 </div>
                 <div class="container-right">
-                    <img src="JobPortal Logo Mix.png" alt="JobSipat Logo">
+                    <img src="{% static 'img/JobPortal Logo Mix.png'%}" alt="JobSipat Logo">
                 </div>
             </div>
         </div>
