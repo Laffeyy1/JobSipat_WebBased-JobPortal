@@ -1,19 +1,18 @@
 from django import forms
-from .models import Userss
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
 class LoginForm(forms.Form):
-    email = forms.EmailField(widget=forms.TextInput(attrs={
-        "class" : "info",
-        "type" : "",
-        "placeholder" : "Username / Email"
+    username_or_email = forms.CharField(widget=forms.TextInput(attrs={
+        "class": "info",
+        "type": "text",
+        "placeholder": "Username / Email",
     }), label="")
 
     password = forms.CharField(widget=forms.PasswordInput(attrs={
-        "class" : "info",
-        "type" : "password",
-        "placeholder" : "Password"
+        "class": "info",
+        "type": "password",
+        "placeholder": "Password",
     }), label="")
 
 class SignupForm(forms.Form):

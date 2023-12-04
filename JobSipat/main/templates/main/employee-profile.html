@@ -50,17 +50,12 @@
                             <div class="top-design"></div>
                             <div class="pic-container">
                                 <div class="profile-pic pic">
-                                    <style>
-                                        .pic{
-                                            background-image: url(InstaGreen\ -\ Copy.jpg);
-                                        }
-                                    </style>
+                                    <!--<img class="logo" src="{% static 'img/InstaGreen - Copy.jpg' %}" alt="logo">-->
                                 </div>
                             </div>
-                            <span class="profile-name">Dexter R De Asis</span>
+                            <span class="profile-name">{{ user.username }}</span>
                         </div>
                         
-
                         <div class="flex-personal-info">
                             <div class="peronal-info-container">
                                 <span class="profile-info-h1">Personal Bio</span>

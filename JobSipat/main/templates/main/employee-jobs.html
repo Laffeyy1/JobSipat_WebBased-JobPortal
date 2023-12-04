@@ -3,7 +3,7 @@
     <head>
         <title>Home</title>
         <link rel="stylesheet" type="text/css" href="{% static 'css/employee-jobs.css' %}">
-
+        <link rel="icon" href="{% static 'img/JobPortal Logo Emblem.png' %}">
         <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <script src="https://kit.fontawesome.com/8a0bbee573.js" crossorigin="anonymous"></script>
@@ -19,22 +19,29 @@
                         </div>
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a href="employee-profile.html" class="nav-link">
+                                <a href="{% url 'employeeProfile' %}" class="nav-link">
                                     <ion-icon name="person-circle-outline"></ion-icon>
                                     <span class="nav-text">Profile</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="employee-jobs.html" class="nav-link">
+                                <a href="{% url 'employeeHome' %}" class="nav-link">
                                     <ion-icon name="briefcase-outline"></ion-icon>
                                     <span class="nav-text">Jobs</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="employee-notif.html" class="nav-link">
+                                <a href="{% url 'employeeNotif' %}" class="nav-link">
                                     <ion-icon name="notifications-outline"></ion-icon>
                                     <span class="nav-text">Notification</span>
                                 </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="" class="nav-link">
+                                    <ion-icon name="notifications-outline"></ion-icon>
+                                    <span class="nav-text">Logout</span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>

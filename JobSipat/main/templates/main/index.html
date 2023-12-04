@@ -17,7 +17,7 @@
         <div class="bg-container">
             <div class="container">
                 <div>
-                    <a href="home"><button class="back"><ion-icon name="close-circle-outline"></ion-icon></button></a>
+                    <a href=""><button class="back"><ion-icon name="close-circle-outline"></ion-icon></button></a>
                 </div>
                 <div class="container-left">
                     <div class="social-container">
@@ -25,11 +25,11 @@
                             <h1>Login</h1>
                         </section>
                     </div>
-                    <form action="{% url 'home' %}" method="post">
+                    <form action="{% url 'index' %}" method="post">
                         {% csrf_token %}
                         <div class="login-info"> 
-                            <label class="info-label">Email</label><br>
-                            {{ form.email }}
+                            <label class="info-label">Username / Email</label><br>
+                            {{ form.username_or_email }}
                             <label class="info-label">Password</label><br>
                             {{ form.password }}
     
@@ -41,7 +41,11 @@
                                     <label class="forgot-pass">Forgot Password?</label> 
                                 </div>
                             </div>
-                            
+                            {% if form.errors %}
+                                <div class="alert alert-danger">
+                                    {{ form.errors }}
+                                </div>
+                            {% endif %}
                             <div class="login-container">
                                 <button  type="submit" class="login">
                                     <span class="loginTxt">Login</span>
