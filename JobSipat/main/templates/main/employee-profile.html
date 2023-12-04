@@ -19,22 +19,23 @@
                     </div>
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a href="employee-profile.html" class="nav-link">
+                            <a href="{% url 'employeeProfile' %}" class="nav-link">
                                 <ion-icon name="person-circle-outline"></ion-icon>
                                 <span class="nav-text">Profile</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="employee-jobs.html" class="nav-link">
+                            <a href="{% url 'employeeHome' %}" class="nav-link">
                                 <ion-icon name="briefcase-outline"></ion-icon>
                                 <span class="nav-text">Jobs</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="employee-notif.html" class="nav-link">
+                            <a href="{% url 'employeeNotif' %}" class="nav-link">
                                 <ion-icon name="notifications-outline"></ion-icon>
                                 <span class="nav-text">Notification</span>
                             </a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -49,9 +50,11 @@
                         <div class="name">
                             <div class="top-design"></div>
                             <div class="pic-container">
-                                <div class="profile-pic pic">
-                                    <!--<img class="logo" src="{% static 'img/InstaGreen - Copy.jpg' %}" alt="logo">-->
-                                </div>
+                                {% if user_profile.profile_pic %}
+                                    <img class="profile-pic pic" src="{{ user_profile.profile_pic.url }}" alt="Profile Picture">
+                                {% else %}
+                                    <ion-icon name="person-sharp" class="picture"></ion-icon>
+                                {% endif %}
                             </div>
                             <span class="profile-name">{{ user.username }}</span>
                         </div>
@@ -60,79 +63,83 @@
                             <div class="peronal-info-container">
                                 <span class="profile-info-h1">Personal Bio</span>
                                 <div class="info-container">
+                                    <span class="profile-info-h2">First Name: </span>
+                                    <span class="profile-info">{{ user.first_name }}</span>
+                                </div>
+                                <div class="info-container">
+                                    <span class="profile-info-h2">Last Name: </span>
+                                    <span class="profile-info">{{ user.last_name }}</span>
+                                </div>
+                                <div class="info-container">
                                     <span class="profile-info-h2">Birthday: </span>
-                                    <span class="profile-info">10/20/2002</span>
+                                    <span class="profile-info">{{ user_profile.birthday }}</span>
                                 </div>
                                 <div class="info-container">
                                     <span class="profile-info-h2">Age: </span>
-                                    <span class="profile-info"> 20</span>
+                                    <span class="profile-info"> {{ user_profile.age }}</span>
                                 </div>
                                 <div class="info-container">
                                     <span class="profile-info-h2">Sex: </span>
-                                    <span class="profile-info">Male</span>
+                                    <span class="profile-info">{{ user_profile.sex }}</span>
                                 </div>
                                 <div class="info-container">
                                     <span class="profile-info-h2">Citizenship: </span>
-                                    <span class="profile-info">Filipino</span>
+                                    <span class="profile-info">{{ user_profile.citizenship }}</span>
                                 </div>
                                 <div class="info-container">
                                     <span class="profile-info-h2">Civil Status: </span>
-                                    <span class="profile-info">Single</span>
+                                    <span class="profile-info">{{ user_profile.civil_status }}</span>
                                 </div>
-
                             </div>
                             <div class="peronal-exp-container">
                                 <span class="profile-info-h1">Professional Experience</span>
                                 <div class="info-container">
-                                    <span class="profile-info-h2">Current Company: </span>
-                                    <span class="profile-info">Skinol Derm</span>
+                                    <span class="profile-info-h2">Skills: </span>
+                                    <span class="profile-info">{{ user_profile.skills }}</span>
                                 </div>
                                 <div class="info-container">
                                     <span class="profile-info-h2">Field Of Experties: </span>
-                                    <span class="profile-info">Cosmetic Dermatology</span>
+                                    <span class="profile-info">{{ user_profile.field_of_expertise }}</span>
                                 </div>
-                                <div class="info-container">
-                                    <span class="profile-info-h2">Years of Experience: </span>
-                                    <span class="profile-info">1</span>
-                                </div>
-                                <a href="derma-profile.html">
-                                    <input type="submit" class="resume" value="View Resume"></input>
-                                </a>
+                                {% if user_profile.resume %}
+                                    <a href="{{ user_profile.resume.url }}" target="_blank">
+                                        <input type="button" class="resume" value="View Resume">
+                                    </a>
+                                {% else %}
+                                    <p>No resume available.</p>
+                                {% endif %}
                             </div>
                         </div>
 
                         <div class="contact-container">
+                            <span class="profile-info-h1">Contact</span>
                             <ul>
                                 <li>
                                     <span class="icon"><i class="fa fa-phone" aria-hidden="true"></i>
                                     </span>
-                                    <span class="text">+639186453724</span>
+                                    <span class="text">{{ user_profile.phone_number }}</span>
                                 </li>
                                 <li>
                                     <span class="icon"><i class="fa fa-envelope" aria-hidden="true"></i>
                                     </span>
-                                    <span class="text">deasisdexter4@gmail.com</span>
+                                    <span class="text">{{ user.email }}</span>
                                 </li>
                                 <li>
                                     <span class="icon"><i class="fa fa-home" aria-hidden="true"></i></span>
-                                    <span class="text">0844 Tiaong Guiguinto Bulacan</span>
+                                    <span class="text">{{ user_profile.address }}</span>
                                 </li>
                              </ul>
                         </div>
                     </div>
                     <div class="flex-edit">
                         <div class="edit-container">
-                            <a href="employee-edit.html">
+                            <a href="{% url 'employeeEdit' %}">
                                 <button class="edit"><ion-icon name="settings-outline"></ion-icon>  Edit Profile</button>
                             </a>
                         </div>
                     </div>
                 </div>
-
             </div>
-
-
-        
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
         

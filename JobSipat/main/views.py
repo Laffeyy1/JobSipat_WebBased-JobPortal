@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from .forms import SignupForm, LoginForm
+from .forms import SignupForm, LoginForm, EditForm
 from .models import Profile
 # Create your views here.
 
@@ -62,25 +62,82 @@ def signup(request):
             # Log the user in
             login(request, user)
 
-            return redirect('index')  # Change 'home' to the desired redirect path after successful signup
+            return redirect('index')
     else:
         form = SignupForm()
 
     return render(request, 'main/Signup.html', {'form': form})
 
 
-def employeeProfile(response):
+def employeeProfile(request):
+    user_profile = None
+    if hasattr(request.user, 'profile'):
+        user_profile = request.user.profile
+    else:
+        print("No profile found for user:", request.user)
 
-    return render(response, "main/employee-profile.html",{})
+    return render(request, "main/employee-profile.html", {'user_profile': user_profile})
 
-def employeeNotif(response):
-    return render(response, "main/employee-notif.html",{})
+def employeeNotif(request):
+    return render(request, "main/employee-notif.html",{})
+
+def employeeHome(request):
+
+    user_profile = None
+    if hasattr(request.user, 'profile'):
+        user_profile = request.user.profile
+    else:
+        print("No profile found for user:", request.user)
+
+    return render(request, "main/employee-jobs.html",{})
+
+@login_required
+def employeeEdit(request):
+    user = request.user
+    user_profile = request.user.profile
+    if request.method == 'POST':
+        form = EditForm(request.POST)
+        if form.is_valid():
+            user.first_name = form.cleaned_data['first_name']
+            user.last_name = form.cleaned_data['last_name']
+            user.email = form.cleaned_data['email']
+            user_profile = user.profile
+            user_profile.address = form.cleaned_data['address']
+            user_profile.phone_number = form.cleaned_data['phone_number']
+            user_profile.birthday = form.cleaned_data['birthday']
+            user_profile.age = form.cleaned_data['age']
+            user_profile.citizenship = form.cleaned_data['citizenship']
+            user_profile.civil_status = form.cleaned_data['civil_status']
+            user_profile.sex = form.cleaned_data['gender']
+            user_profile.skills = form.cleaned_data['skills']
+            user_profile.field_of_expertise = form.cleaned_data['field_of_expertise']
+
+            if 'resume' in request.FILES:
+                user_profile.resume = request.FILES['resume']
+            if 'profile_pic' in request.FILES:
+                user_profile.profile_pic = request.FILES['profile_pic']
 
 
-def employeeHome(response):
+            user.save()
+            user_profile.save()
+            return redirect('employeeProfile')
+    else:
 
-    return render(response, "main/employee-jobs.html",{})
+        form = EditForm(initial={
+            'first_name': user.first_name,
+            'last_name': user.last_name,
+            'email': user.email,
+            'address': user_profile.address,
+            'phone_number': user_profile.phone_number,
+            'birthday': user_profile.birthday,
+            'age': user_profile.age,
+            'citizenship': user_profile.citizenship,
+            'civil_status': user_profile.civil_status,
+            'gender': user_profile.sex,
+            'skills': user_profile.skills,
+            'field_of_expertise': user_profile.field_of_expertise,
+            'profile_pic' : user_profile.profile_pic,
+            'resume' : user_profile.resume,
+        })
 
-def employeeEdit(response):
-    return render(response, "main/employee-edit.html",{})
-
+    return render(request, "main/employee-edit.html", {'form': form})

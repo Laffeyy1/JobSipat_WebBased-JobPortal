@@ -19,7 +19,7 @@
                     </div>
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a href="employee-profile.html" class="nav-link">
+                            <a href="{% url 'employeeProfile' %}" class="nav-link">
                                 <ion-icon name="person-circle-outline"></ion-icon>
                                 <span class="nav-text">Profile</span>
                             </a>
@@ -42,123 +42,116 @@
             <div class="right-container">
                 
                 <div class="edit-container">
-                    <div class="flex-edit">
-                        <div class="edit">
-                        <span class="profile-edit">Edit Profile</span>
-                        </div>
-                        
-                        <div class="flex-edit-info">
-
-                            <div class="edit-info-top">
-                                <div class="info-top-right">
-                                    <span class="edit-info-h1">Personal Bio</span>
-                                    <div class="info-container">
-                                        <span class="edit-info-h2">Name: </span>
-                                        <input type="text" class="info-top" placeholder="Full Name"></input>
-                                    </div>
-                                    <div class="info-container">
-                                        <span class="edit-info-h2">Address: </span>
-                                        <input type="text" class="info-top" placeholder="No./Street/Barangay/Municipality/Province"></input>
-                                    </div>
-                                    <div class="info-container">
-                                        <span class="edit-info-h2">Mobile Number: </span>
-                                        <input type="text" class="info-top" placeholder="(000)-0000-0000"></input>
-                                    </div>
-                                    <div class="info-container">
-                                        <span class="edit-info-h2">Email: </span>
-                                        <input type="text" placeholder="@gmail, @yahoo, @hotmail etc." class="info-top"></input>
-                                    </div> 
-                                </div>
-                                <div class="info-top-right">
-                                    <div class="profile-pic">
-                                        <span class="edit-info-h1" >Change Profile</span>
-                                        <div class="pic-container">
-                                            <ion-icon name="person-sharp" class="picture"></ion-icon>
-                                            <input type="submit" class="pic-btn" value="Change Profile">
+                    <form action="{% url 'employeeEdit' %}" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="flex-edit">
+                            <div class="edit">
+                            <span class="profile-edit">Edit Profile</span>
+                            </div>
+                            
+                            <div class="flex-edit-info">
+                                <div class="edit-info-top">
+                                    <div class="info-top-right">
+                                        <span class="edit-info-h1">Personal Bio</span>
+                                        <div class="info-container">
+                                            <span class="edit-info-h2">First Name: </span>
+                                            {{ form.first_name }}
                                         </div>
-                                        <input type="submit" class="resume" value="Update Resume"></input>
+                                        <div class="info-container">
+                                            <span class="edit-info-h2">Last Name: </span>
+                                            {{ form.last_name }}
+                                        </div>
+                                        <div class="info-container">
+                                            <span class="edit-info-h2">Address: </span>
+                                            {{ form.address }}
+                                        </div>
+                                        <div class="info-container">
+                                            <span class="edit-info-h2">Mobile Number: </span>
+                                            {{ form.phone_number }}
+                                        </div>
+                                        <div class="info-container">
+                                            <span class="edit-info-h2">Email: </span>
+                                            {{ form.email }}
+                                        </div> 
                                     </div>
-                                </div>  
-                            </div>
+                                    <div class="info-top-right">
+                                        <div class="profile-pic">
+                                            <span class="edit-info-h1" >Change Profile</span>
+                                            <div class="pic-container">
+                                                {% if form.profile_pic.value %}
+                                                    <img class="picture" src="{{ form.profile_pic.value.url }}" alt="Profile Picture">
+                                                {% else %}
+                                                    <ion-icon name="person-sharp" class="picture"></ion-icon>
+                                                {% endif %}
+                                            </div>
+                                            {{ form.profile_pic }}
+                                        </div>
+                                    </div>
+                                </div>
 
-                            <div class="flex-info-bottom">
+                                <div class="flex-info-bottom">
+                                    <div class="edit-info-container">
+                                        <span class="edit-info-h1">Personal Bio</span>
+                                        <div class="info-container">
+                                            <span class="edit-info-h2">Birthday: </span>
+                                            {{ form.birthday }}
+                                        </div>
+                                        <div class="info-container">
+                                            <span class="edit-info-h2">Age: </span>
+                                            {{ form.age }}
+                                        </div>
+                                        <div class="info-container">
+                                            <span class="edit-info-h2">Citizenship: </span>
+                                            {{ form.citizenship }}
+                                        </div>
+                                        <div class="info-container">
+                                            <span class="edit-info-h2">Civil Status: </span>
+                                            {{ form.civil_status }}
+                                        </div>    
+                                        <div class="info-container">
+                                            <span class="edit-info-h2">Gender: </span>
+                                            {{ form.gender }}
+                                        </div>  
+                                    </div>
                                 <div class="edit-info-container">
-                                    <span class="edit-info-h1">Personal Bio</span>
+                                    <span class="edit-info-h1">Professional Experience</span>
                                     <div class="info-container">
-                                        <span class="edit-info-h2">Birthday: </span>
-                                        <input type="date"class="edit-info1" placeholder="dd/mm/yyyy"></input>
+                                        <span class="edit-info-h2">Skills: </span>
+                                        {{ form.skills }}
                                     </div>
                                     <div class="info-container">
-                                        <span class="edit-info-h2">Age: </span>
-                                        <input type="text" class="edit-info" placeholder="Years old"></input>
+                                        <span class="edit-info-h2">Field Of Experties: </span>
+                                        {{ form.field_of_expertise }}
                                     </div>
                                     <div class="info-container">
-                                        <span class="edit-info-h2">Citizenship: </span>
-                                        <input type="text" placeholder="ex. Filipino" class="edit-info"></input>
-                                    </div>
-                                    <div class="info-container">
-                                        <span class="edit-info-h2">Civil Status: </span>
-                                        <select name="civil" id="" class="edit-info1">
-                                            <option value="single">Single</option>
-                                            <option value="maried">Maried</option>
-                                            <option value="widowed">Widowed</option>
-                                        </select>
-                                    </div>    
-                                    <div class="flex-sex info-container">
-                                        <span class="sex edit-info-h2">Sex: </span>
-                                        <input type="radio" id="male" value="male" name="gender" class="edit-info">
-                                        <label for="male">Male</label>
-                                        <input type="radio" id="female" value="female" name="gender" class="edit-info">
-                                        <label for="female">Female</label>
+                                        <span class="edit-info-h2">Change Resume: </span>
+                                        {% if form.resume.value %}
+                                            <a href="{{ form.resume.value.url }}" target="_blank">
+                                                <input type="button" class="resume" value="View Resume">
+                                            </a>
+                                        {% else %}
+                                            <p>No resume available.</p>
+                                        {% endif %}
+                                        {{ form.resume }}
                                     </div>
                                 </div>
-                            <div class="edit-info-container">
-                                <span class="edit-info-h1">Professional Experience</span>
-                                <div class="info-container">
-                                    <span class="edit-info-h2">Current Company: </span>
-                                    <input type="text" class="edit-info"></input>
-                                </div>
-                                <div class="info-container">
-                                    <span class="edit-info-h2">Field Of Experties: </span>
-                                    <input type="text" class="edit-info"></input>
-                                </div>
-                                <div class="info-container">
-                                    <span class="edit-info-h2">Years of Experience: </span>
-                                    <input type="number" class="edit-info"></input>
-                                </div>
-                                <a href="derma-profile.html">
-                                    <input type="submit" class="resume" value="Update Resume"></input>
-                                </a>
                             </div>
                         </div>
-                    </div>
-                        <div class="flex-button">
-                            <div class="edit-button-container">
-                                <a href="employee-profile.html">
+                            <div class="flex-button">
+                                <div class="edit-button-container">
                                     <input type="submit" class="edit" value="Done"></input>
-                                </a>
-                                <a href="employee-profile.html">
-                                    <button class="edit">Cancel</button>
-                                </a>
+                                    <a href="{% url 'employeeProfile' %}">
+                                        <button class="edit">Cancel</button>
+                                    </a>
+                                </div>
                             </div>
                         </div>
-
-
+                    </form>
                 </div>
-                    
-                    
             </div>
-
         </div>
-
-
-        
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-        
-        
         <script src="https://cdn.jsdelivr.net/npm/chart.js@4.0.1/dist/chart.umd.min.js"></script>
-        <script src="newmember-chart.js"></script>
-        <script src="earning-chart.js"></script>
     </body>
 </html>
