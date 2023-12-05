@@ -53,3 +53,31 @@ class Profile(models.Model):
 
     def __str__(self):
         return "%s's profile" % self.user.username
+
+class Job_Post(models.Model):
+    title = models.CharField(max_length=255)
+    company_name = models.CharField(max_length=255)
+    job_position = models.CharField(max_length=255)
+    address = models.CharField(max_length=255)
+    
+    PART_TIME = 'Part Time'
+    FULL_TIME = 'Full Time'
+    EMPLOYMENT_TYPE_CHOICES = [
+        (PART_TIME, 'Part Time'),
+        (FULL_TIME, 'Full Time'),
+    ]
+    employment_type = models.CharField(
+        max_length=20,
+        choices=EMPLOYMENT_TYPE_CHOICES,
+        default=FULL_TIME,
+    )
+    
+    salary_offer = models.DecimalField(max_digits=10, decimal_places=2)
+    primary_duties = models.TextField()
+    job_description = models.TextField()
+    skills_recommended = models.TextField()
+    
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title

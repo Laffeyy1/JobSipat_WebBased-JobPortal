@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .forms import SignupForm, LoginForm, EditForm
-from .models import Profile
+from .models import Profile, Job_Post
+from django.http import HttpResponse
+
 # Create your views here.
 
 def index(request):
@@ -30,8 +32,19 @@ def index(request):
                 else:
                     return redirect('index')
             else:
-                return render(request, 'main/login.html', {'form': form, 'error': 'Invalid login credentials'})
+                return render(request, 'main/index.html', {'form': form, 'error': 'Invalid login credentials'})
     else:
+        if request.user.is_authenticated:
+            profile = request.user.profile
+            user_type = profile.user_type
+
+            if user_type == 'Applicant':
+                return redirect('employeeHome')
+            elif user_type == 'Employer':
+                return redirect('employerHome')
+            elif user_type == 'Admin':
+                return redirect('adminHome')
+            
         form = LoginForm()
 
     return render(request, 'main/index.html', {'form': form})
@@ -68,7 +81,11 @@ def signup(request):
 
     return render(request, 'main/Signup.html', {'form': form})
 
+def logout_view(request):
+    logout(request)
+    return redirect('index')
 
+@login_required
 def employeeProfile(request):
     user_profile = None
     if hasattr(request.user, 'profile'):
@@ -78,18 +95,20 @@ def employeeProfile(request):
 
     return render(request, "main/employee-profile.html", {'user_profile': user_profile})
 
+@login_required
 def employeeNotif(request):
     return render(request, "main/employee-notif.html",{})
 
+@login_required
 def employeeHome(request):
-
+    job_posts = Job_Post.objects.all()
     user_profile = None
     if hasattr(request.user, 'profile'):
         user_profile = request.user.profile
     else:
         print("No profile found for user:", request.user)
 
-    return render(request, "main/employee-jobs.html",{})
+    return render(request, "main/employee-jobs.html", {'job_posts': job_posts})
 
 @login_required
 def employeeEdit(request):
