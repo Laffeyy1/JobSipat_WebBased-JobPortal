@@ -1,0 +1,158 @@
+{% load static %}
+<html>
+    <head>
+        <title>Company Profile</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/company-profile.css' %}">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <script src="https://kit.fontawesome.com/8a0bbee573.js" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&family=Patua+One&family=Poppins:wght@500&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+        <div class="main-container">
+            <div class="header"></div>
+            <div class="flex-container">
+                <div class="popup-nav">
+                    <div class="logo">
+                        <img src="JobPortal Logo Emblem.png" alt="Cosmedic">
+                    </div>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a href="{% url 'companyProfile' %}" class="nav-link">
+                                <ion-icon name="person-circle-outline"></ion-icon>
+                                <span class="nav-text">Profile</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'companyJobOffers' %}" class="nav-link">
+                                <ion-icon name="briefcase-outline"></ion-icon>
+                                <span class="nav-text">Job Offers</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'companyPostAd' %}" class="nav-link">
+                                <ion-icon name="notifications-outline"></ion-icon>
+                                <span class="nav-text">Post Job Ad</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="" class="nav-link">
+                                <ion-icon name="notifications-outline"></ion-icon>
+                                <span class="nav-text">Logout</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="right-container">
+                <div class="profile-header">
+                    <span>Profile</span>
+                </div>
+
+                <div class="profile-container">
+                    <div class="flex-profile">
+                        <div class="name">
+                            <div class="top-design"></div>
+                            <div class="pic-container">
+                                <div class="profile-pic pic">
+                                    <style>
+                                        .pic{
+                                            background-image: url(accenture-dp.jpg);
+                                        }
+                                    </style>
+                                </div>
+                            </div>
+                            <span class="profile-name">Job Ad Title</span>
+                        </div>
+
+
+                        <div class="flex-personal-info">
+                            <div class="peronal-info-container">
+                                <span class="profile-info-h1">Job Ad Overview</span>
+                                <div class="info-container">
+                                    <span class="profile-info-h2">Company Name: </span>
+                                    <span class="profile-info">Accenture</span>
+                                </div>
+                                <div class="info-container">
+                                    <span class="profile-info-h2">Job Position: </span>
+                                    <span class="profile-info">System Analyst</span>
+                                </div>
+                                <div class="info-container">
+                                    <span class="profile-info-h2">Employment Type: </span>
+                                    <span class="profile-info">Full-time</span>
+                                </div>
+                                <div class="info-container">
+                                    <span class="profile-info-h2">Salary Offer: </span>
+                                    <span class="profile-info">20-30k</span>
+                                </div>
+
+                            </div>
+                            <div class="peronal-exp-container">
+                                <span class="profile-info-h1">Nature of the Job</span>
+                                <div class="info-container">
+                                    <span class="profile-info-h2">Primary Duties and Responsibilities: </span>
+                                    <span class="profile-info">Analyzing System
+                                    </span>
+                                </div>
+                                <div class="info-container">
+                                    <span class="profile-info-h2">Job Description: </span>
+                                    <span class="profile-info">u need dis and dat</span>
+                                </div>
+                                <div class="info-container">
+                                    <span class="profile-info-h2">Skills Required: </span>
+                                    <span class="profile-info">u do dis and dat</span>
+                                </div>
+                                <a href="derma-profile.html">
+                                    <input type="submit" class="resume" value="View Resume"></input>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="contact-container">
+                            <ul>
+                                <li>
+                                    <span class="icon"><i class="fa fa-phone" aria-hidden="true"></i>
+                                    </span>
+                                    <span class="text">Contact Number</span>
+                                    <span class="text">+6566778139</span>
+                                </li>
+                                <li>
+                                    <span class="icon"><i class="fa fa-envelope" aria-hidden="true"></i>
+                                    </span>
+                                    <span class="text">Website</span>
+                                    <a href="http://bit.ly/accenturetechphcareers">http://bit.ly/accenturetechphcareers</a>
+                                </li>
+                                <li>
+                                    <span class="icon"><i class="fa fa-home" aria-hidden="true"></i></span>
+                                    <span class="text">Address</span>
+                                    <span class="text">250 North Bridge Road, #35-00 Raffles City Tower 179101 Singapore
+                                    </span>
+                                </li>
+                             </ul>
+                        </div>
+                    </div>
+
+                    <div class="flex-edit">
+                        <div class="edit-container">
+                            <a href="employee-edit.html">
+                                <button class="edit"><ion-icon name="settings-outline"></ion-icon>  Edit Profile</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@4.0.1/dist/chart.umd.min.js"></script>
+        <script src="newmember-chart.js"></script>
+        <script src="earning-chart.js"></script>
+    </body>
+</html>
