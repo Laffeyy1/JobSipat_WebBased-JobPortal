@@ -145,6 +145,11 @@ main{
     align-items: center;
     justify-content: space-between;
 }
+.client-flex-search{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 .client-flex span{
     font-size: 2rem;
 
@@ -240,6 +245,18 @@ main{
     background: linear-gradient(70deg, #bd2828, #f6bd60);
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
+}
+.profile-pic{
+    left: 14%;
+    top: 17%;
+    width: 15rem;
+    height: 15rem;
+
+    border: solid 10px #fff;
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover
 }
 .company-name{
     font-size: 2rem;
