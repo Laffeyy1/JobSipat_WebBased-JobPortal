@@ -69,7 +69,7 @@
                                     </div>
                                     <div class="info-container">
                                         <form class="was-validated">
-                                            <span class="edit-info-h2">Part-time/Full-time: </span>
+                                            <span class="edit-info-h2">Work Type: </span>
                                             <div class="custom-control custom-radio">
                                                 <input type="radio" class="custom-control-input" id="customControlValidation2" name="radio-stacked" required>
                                                 <label class="custom-control-label" for="customControlValidation2">Part-time</label>
@@ -80,11 +80,11 @@
                                             </div>
                                             <div class="custom-control custom-radio">
                                                 <input type="radio" class="custom-control-input" id="customControlValidation4" name="radio-stacked" required>
-                                                <label class="custom-control-label" for="customControlValidation2">Part-time</label>
+                                                <label class="custom-control-label" for="customControlValidation2">Contract/Temp</label>
                                             </div>
                                             <div class="custom-control custom-radio">
                                                 <input type="radio" class="custom-control-input" id="customControlValidation5" name="radio-stacked" required>
-                                                <label class="custom-control-label" for="customControlValidation2">Part-time</label>
+                                                <label class="custom-control-label" for="customControlValidation2">Casual/Vacation</label>
                                                 <div class="invalid-feedback">Select one</div>
                                             </div>
                                         </form>
@@ -117,10 +117,10 @@
 
                         <div class="flex-button">
                             <div class="edit-button-container">
-                                <a href="company-profile.html">
+                                <a href="{% static 'css/company-job-offers.css' %}">
                                     <input type="submit" class="edit" value="Done"></input>
                                 </a>
-                                <a href="company-profile.html">
+                                <a href="{% static 'css/company-job-offers.css' %}">
                                     <button class="edit">Cancel</button>
                                 </a>
                             </div>

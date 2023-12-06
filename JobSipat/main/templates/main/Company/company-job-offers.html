@@ -69,9 +69,9 @@
                                   Dropdown button
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                  <a class="dropdown-item" href="#">Action</a>
-                                  <a class="dropdown-item" href="#">Another action</a>
-                                  <a class="dropdown-item" href="#">Something else here</a>
+                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <a class="dropdown-item" href="#">Something else here</a>
                                 </div>
                               </div>
                         </div>
@@ -82,31 +82,59 @@
                             <div class="name">
                                 <div class="top-design"></div>
                                 <div class="company-info">
-                                    <span class="company-name">Job Ad Title</span>
-                                    <span class="company-ad-h1">Company Name</span>
-                                    <span class="company-pos-h1">Job Position</span>
-                                    <span class="company-add">Address</span>
-                                    <span class="company-add">Part-time / Full-time</span>
-                                    <span class="company-add"> Salary Offer</span>
-                                        <details class="accordion">
-                                            <summary class="accordion-btn">Primary Duties and Responsibility:</summary>
-                                            <div class="accordion-content">
-                                            <p>
-                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic nesciunt, iste ut incidunt officia maxime impedit sit eligendi labore inventore, reprehenderit excepturi voluptas sequi eos dolorem voluptatibus porro voluptate dolorum.
-                                            </p>
-                                            </div>
-                                        </details>
-                                    <div class="peronal-info-container">
-                                        <details class="accordion">
-                                            <summary class="accordion-btn">Job Description:</summary>
-                                            <div class="accordion-content">
-
-                                                <p>
-                                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic nesciunt, iste ut incidunt officia maxime impedit sit eligendi labore inventore, reprehenderit excepturi voluptas sequi eos dolorem voluptatibus porro voluptate dolorum.
-                                                </p>
-                                            </div>
-                                        </details>
-                                    </div>
+                                    <span class="company-name">{{ job_post.title }}</span>
+                                        <span class="company-add">{{ job_post.company_name }}</span>
+                                            <details class="accordion">
+                                                <summary class="accordion-btn">Company Job Details:</summary>
+                                                <div class="accordion-content">
+                                                    <p></p>
+                                                    <p>{{ job_post.address }}</p>
+                                                    <p>{{ job_post.job_position }}</p>
+                                                    <p>{{ job_post.employment_type }}</p>
+                                                    <p>₱{{ job_post.salary_offer }}</p>
+                                                </div>
+                                            </details>
+                                        <div class="peronal-info-container">
+                                            <details class="accordion">
+                                                <summary class="accordion-btn">Job Description:</summary>
+                                                <div class="accordion-content">
+                                                    <p></p>
+                                                    <p>{{ job_post.primary_duties }}</p>
+                                                    <p>{{ job_post.job_description }}</p>
+                                                    <p>{{ job_post.skills_recommended }}</p>
+                                                    <p>{{ job_post.created_at }}</p>
+                                                </div>
+                                            </details>
+                                        </div>
+                                </div>
+                            </div>
+                            <div class="name">
+                                <div class="top-design"></div>
+                                <div class="company-info">
+                                    <span class="company-name">{{ job_post.title }}</span>
+                                        <span class="company-add">{{ job_post.company_name }}</span>
+                                            <details class="accordion">
+                                                <summary class="accordion-btn">Company Job Details:</summary>
+                                                <div class="accordion-content">
+                                                    <p></p>
+                                                    <p>{{ job_post.address }}</p>
+                                                    <p>{{ job_post.job_position }}</p>
+                                                    <p>{{ job_post.employment_type }}</p>
+                                                    <p>₱{{ job_post.salary_offer }}</p>
+                                                </div>
+                                            </details>
+                                        <div class="peronal-info-container">
+                                            <details class="accordion">
+                                                <summary class="accordion-btn">Job Description:</summary>
+                                                <div class="accordion-content">
+                                                    <p></p>
+                                                    <p>{{ job_post.primary_duties }}</p>
+                                                    <p>{{ job_post.job_description }}</p>
+                                                    <p>{{ job_post.skills_recommended }}</p>
+                                                    <p>{{ job_post.created_at }}</p>
+                                                </div>
+                                            </details>
+                                        </div>
                                     <div class="flex-edit">
                                         <div class="edit-container">
                                             <a href="employee-edit.html">
@@ -122,80 +150,30 @@
                             <div class="name">
                                 <div class="top-design"></div>
                                 <div class="company-info">
-                                    <span class="company-name">Job Ad Title</span>
-                                    <span class="company-ad-h1">Company Name</span>
-                                    <span class="company-pos-h1">Job Position</span>
-                                    <span class="company-add">Address</span>
-                                    <span class="company-add">Part-time / Full-time</span>
-                                    <span class="company-add"> Salary Offer</span>
-                                        <details class="accordion">
-                                            <summary class="accordion-btn">Primary Duties and Responsibility:</summary>
-                                            <div class="accordion-content">
-                                            <p>
-                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic nesciunt, iste ut incidunt officia maxime impedit sit eligendi labore inventore, reprehenderit excepturi voluptas sequi eos dolorem voluptatibus porro voluptate dolorum.
-                                            </p>
-                                            </div>
-                                        </details>
-                                    <div class="peronal-info-container">
-                                        <details class="accordion">
-                                            <summary class="accordion-btn">Job Description:</summary>
-                                            <div class="accordion-content">
-
-                                                <p>
-                                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic nesciunt, iste ut incidunt officia maxime impedit sit eligendi labore inventore, reprehenderit excepturi voluptas sequi eos dolorem voluptatibus porro voluptate dolorum.
-                                                </p>
-                                            </div>
-                                        </details>
-                                    </div>
-                                    <div class="flex-edit">
-                                        <div class="edit-container">
-                                            <a href="employee-edit.html">
-                                                <button class="edit"> Edit Job</button>
-                                            </a>
-                                            <a>
-                                                <button class="edit"> Activate / Deactivate</button>
-                                            </a>
+                                    <span class="company-name">{{ job_post.title }}</span>
+                                        <span class="company-add">{{ job_post.company_name }}</span>
+                                            <details class="accordion">
+                                                <summary class="accordion-btn">Company Job Details:</summary>
+                                                <div class="accordion-content">
+                                                    <p></p>
+                                                    <p>{{ job_post.address }}</p>
+                                                    <p>{{ job_post.job_position }}</p>
+                                                    <p>{{ job_post.employment_type }}</p>
+                                                    <p>₱{{ job_post.salary_offer }}</p>
+                                                </div>
+                                            </details>
+                                        <div class="peronal-info-container">
+                                            <details class="accordion">
+                                                <summary class="accordion-btn">Job Description:</summary>
+                                                <div class="accordion-content">
+                                                    <p></p>
+                                                    <p>{{ job_post.primary_duties }}</p>
+                                                    <p>{{ job_post.job_description }}</p>
+                                                    <p>{{ job_post.skills_recommended }}</p>
+                                                    <p>{{ job_post.created_at }}</p>
+                                                </div>
+                                            </details>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="name">
-                                <div class="top-design"></div>
-                                <div class="company-info">
-                                    <span class="company-name">Job Ad Title</span>
-                                    <span class="company-ad-h1">Company Name</span>
-                                    <span class="company-pos-h1">Job Position</span>
-                                    <span class="company-add">Address</span>
-                                    <span class="company-add">Part-time / Full-time</span>
-                                    <span class="company-add"> Salary Offer</span>
-                                        <details class="accordion">
-                                            <summary class="accordion-btn">Primary Duties and Responsibility:</summary>
-                                            <div class="accordion-content">
-                                            <p>
-                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic nesciunt, iste ut incidunt officia maxime impedit sit eligendi labore inventore, reprehenderit excepturi voluptas sequi eos dolorem voluptatibus porro voluptate dolorum.
-                                            </p>
-                                            </div>
-                                        </details>
-                                    <div class="peronal-info-container">
-                                        <details class="accordion">
-                                            <summary class="accordion-btn">Job Description:</summary>
-                                            <div class="accordion-content">
-                                                <p>
-                                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic nesciunt, iste ut incidunt officia maxime impedit sit eligendi labore inventore, reprehenderit excepturi voluptas sequi eos dolorem voluptatibus porro voluptate dolorum.
-                                                </p>
-                                            </div>
-                                        </details>
-                                    </div>
-                                    <div class="flex-edit">
-                                        <div class="edit-container">
-                                            <a href="employee-edit.html">
-                                                <button class="edit"> Edit Job</button>
-                                            </a>
-                                            <a>
-                                                <button class="edit"> Activate / Deactivate</button>
-                                            </a>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
