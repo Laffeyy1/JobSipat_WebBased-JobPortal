@@ -38,7 +38,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="" class="nav-link" data-toggle="modal" data-target="#logoutModal">
+                            <a href="{% url 'logout' %}" class="nav-link" data-toggle="modal" data-target="#logoutModal">
                                 <ion-icon name="notifications-outline"></ion-icon>
                                 <span class="nav-text">Logout</span>
                             </a>
@@ -127,7 +127,7 @@
                                         At Accenture, we collaborate with exceptional people across the globe, combining our ingenuity, industry expertise and the latest technology to deliver 360° value for our clients, people and communities.
                                         Here, you can harness powerful change to make a world of difference!</span>
                                 </div>
-                                <a href="derma-profile.html">
+                                <a href="{% url 'resume' %}">
                                     <input type="submit" class="resume" value="View Resume"></input>
                                 </a>
                             </div>
@@ -156,7 +156,7 @@
 
                     <div class="flex-edit">
                         <div class="edit-container">
-                            <a href="employee-edit.html">
+                            <a href="{% url 'companyEdit' %}">
                                 <button class="edit"><ion-icon name="settings-outline"></ion-icon>  Edit Profile</button>
                             </a>
                         </div>
