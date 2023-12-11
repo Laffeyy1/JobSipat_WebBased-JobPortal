@@ -108,8 +108,51 @@
                         </div>
                     </div>
 
+                    <!-- start of single job ad display that is selected from recommeded list  -->
+                    <!-- hindi ko pa kasi maayos yung layout, nagugulo 'pag isa lang nakalagay, so yung unang job ad display lang counted, unless okay lang na ganto na lang -->
                     <div class="profile-container">
                         <div class="grid-profile">
+                            <div class="name">
+                                <div class="top-design"></div>
+                                <div class="company-info">
+                                    <span class="company-name">{{ job_post.title }}</span>
+                                        <span class="company-add">{{ job_post.company_name }}</span>
+                                            <details class="accordion">
+                                                <summary class="accordion-btn">Company Job Details:</summary>
+                                                <div class="accordion-content">
+                                                    <p></p>
+                                                    <p>{{ job_post.address }}</p>
+                                                    <p>{{ job_post.job_position }}</p>
+                                                    <p>{{ job_post.employment_type }}</p>
+                                                    <p>₱{{ job_post.salary_offer }}</p>
+                                                </div>
+                                            </details>
+                                        <div class="peronal-info-container">
+                                            <details class="accordion">
+                                                <summary class="accordion-btn">Job Description:</summary>
+                                                <div class="accordion-content">
+                                                    <p></p>
+                                                    <p>{{ job_post.primary_duties }}</p>
+                                                    <p>{{ job_post.job_description }}</p>
+                                                    <p>{{ job_post.skills_recommended }}</p>
+                                                    <p>{{ job_post.created_at }}</p>
+                                                </div>
+                                            </details>
+                                        </div>
+                                        <div class="flex-edit">
+                                            <div class="edit-container">
+                                                <a href="{% url 'companyPostEdit' %}">
+                                                    <button class="edit"> Edit Job</button>
+                                                </a>
+                                                <a>
+                                                    <button class="edit"> Activate / Deactivate</button>
+                                                </a>
+                                            </div>
+                                        </div>
+                                </div>
+                            </div>
+                            <!-- end of single job ad display that is selected from recommeded list  -->
+
                             <div class="name">
                                 <div class="top-design"></div>
                                 <div class="company-info">
@@ -178,46 +221,7 @@
                                         </div>
                                         <div class="flex-edit">
                                             <div class="edit-container">
-                                                <a href="{% static 'css/company-post-edit.css' %}">
-                                                    <button class="edit"> Edit Job</button>
-                                                </a>
-                                                <a>
-                                                    <button class="edit"> Activate / Deactivate</button>
-                                                </a>
-                                            </div>
-                                        </div>
-                                </div>
-                            </div>
-                            <div class="name">
-                                <div class="top-design"></div>
-                                <div class="company-info">
-                                    <span class="company-name">{{ job_post.title }}</span>
-                                        <span class="company-add">{{ job_post.company_name }}</span>
-                                            <details class="accordion">
-                                                <summary class="accordion-btn">Company Job Details:</summary>
-                                                <div class="accordion-content">
-                                                    <p></p>
-                                                    <p>{{ job_post.address }}</p>
-                                                    <p>{{ job_post.job_position }}</p>
-                                                    <p>{{ job_post.employment_type }}</p>
-                                                    <p>₱{{ job_post.salary_offer }}</p>
-                                                </div>
-                                            </details>
-                                        <div class="peronal-info-container">
-                                            <details class="accordion">
-                                                <summary class="accordion-btn">Job Description:</summary>
-                                                <div class="accordion-content">
-                                                    <p></p>
-                                                    <p>{{ job_post.primary_duties }}</p>
-                                                    <p>{{ job_post.job_description }}</p>
-                                                    <p>{{ job_post.skills_recommended }}</p>
-                                                    <p>{{ job_post.created_at }}</p>
-                                                </div>
-                                            </details>
-                                        </div>
-                                        <div class="flex-edit">
-                                            <div class="edit-container">
-                                                <a href="{% static 'css/company-post-edit.css' %}">
+                                                <a href="{% url 'companyPostEdit' %}">
                                                     <button class="edit"> Edit Job</button>
                                                 </a>
                                                 <a>
@@ -229,86 +233,89 @@
                             </div>
                         </div>
 
+
+                        <!-- list of posted job ads -->
+                        <!-- if one is clicked from here, the details will be displayed at job ad display at the top -->
                         <div class="recco">
                             <div class="top-design"></div>
                             <div class="recco-container">
                                 <span>Job Ads</span>
                                 <div class="recco-scroll">
                                     <div class="recco-company">
-                                        <h1>Job Ad Name</h1>
-                                        <p>Company Name</p>
+                                        <h1>{{ job_post.title }}</h1>
+                                        <p>{{ job_post.company_name }}</p>
                                         <p>Date Posted</p>
                                             <a href="{{ user_profile.resume.url }}" target="_blank">
                                                 <input type="button" class="resume" value="View Job Ad">
                                             </a>
                                     </div>
                                     <div class="recco-company">
-                                        <h1>Job Ad Name</h1>
-                                        <p>Company Name</p>
+                                        <h1>{{ job_post.title }}</h1>
+                                        <p>{{ job_post.company_name }}</p>
                                         <p>Date Posted</p>
                                             <a href="{{ user_profile.resume.url }}" target="_blank">
                                                 <input type="button" class="resume" value="View Job Ad">
                                             </a>
                                     </div>
                                     <div class="recco-company">
-                                        <h1>Job Ad Name</h1>
-                                        <p>Company Name</p>
+                                        <h1>{{ job_post.title }}</h1>
+                                        <p>{{ job_post.company_name }}</p>
                                         <p>Date Posted</p>
                                             <a href="{{ user_profile.resume.url }}" target="_blank">
                                                 <input type="button" class="resume" value="View Job Ad">
                                             </a>
                                     </div>
                                     <div class="recco-company">
-                                        <h1>Job Ad Name</h1>
-                                        <p>Company Name</p>
+                                        <h1>{{ job_post.title }}</h1>
+                                        <p>{{ job_post.company_name }}</p>
+                                        <p>{{ job_post.created_at }}</p>
+                                            <a href="{{ user_profile.resume.url }}" target="_blank">
+                                                <input type="button" class="resume" value="View Job Ad">
+                                            </a>
+                                    </div>
+                                    <div class="recco-company">
+                                        <h1>{{ job_post.title }}</h1>
+                                        <p>{{ job_post.company_name }}</p>
                                         <p>Date Posted</p>
                                             <a href="{{ user_profile.resume.url }}" target="_blank">
                                                 <input type="button" class="resume" value="View Job Ad">
                                             </a>
                                     </div>
                                     <div class="recco-company">
-                                        <h1>Job Ad Name</h1>
-                                        <p>Company Name</p>
+                                        <h1>{{ job_post.title }}</h1>
+                                        <p>{{ job_post.company_name }}</p>
                                         <p>Date Posted</p>
                                             <a href="{{ user_profile.resume.url }}" target="_blank">
                                                 <input type="button" class="resume" value="View Job Ad">
                                             </a>
                                     </div>
                                     <div class="recco-company">
-                                        <h1>Job Ad Name</h1>
-                                        <p>Company Name</p>
+                                        <h1>{{ job_post.title }}</h1>
+                                        <p>{{ job_post.company_name }}</p>
                                         <p>Date Posted</p>
                                             <a href="{{ user_profile.resume.url }}" target="_blank">
                                                 <input type="button" class="resume" value="View Job Ad">
                                             </a>
                                     </div>
                                     <div class="recco-company">
-                                        <h1>Job Ad Name</h1>
-                                        <p>Company Name</p>
+                                        <h1>{{ job_post.title }}</h1>
+                                        <p>{{ job_post.company_name }}</p>
                                         <p>Date Posted</p>
                                             <a href="{{ user_profile.resume.url }}" target="_blank">
                                                 <input type="button" class="resume" value="View Job Ad">
                                             </a>
                                     </div>
                                     <div class="recco-company">
-                                        <h1>Job Ad Name</h1>
-                                        <p>Company Name</p>
+                                        <h1>{{ job_post.title }}</h1>
+                                        <p>{{ job_post.company_name }}</p>
                                         <p>Date Posted</p>
                                             <a href="{{ user_profile.resume.url }}" target="_blank">
                                                 <input type="button" class="resume" value="View Job Ad">
                                             </a>
                                     </div>
                                     <div class="recco-company">
-                                        <h1>Job Ad Name</h1>
-                                        <p>Company Name</p>
-                                        <p>Date Posted</p>
-                                            <a href="{{ user_profile.resume.url }}" target="_blank">
-                                                <input type="button" class="resume" value="View Job Ad">
-                                            </a>
-                                    </div>
-                                    <div class="recco-company">
-                                        <h1>Job Ad Name</h1>
-                                        <p>Company Name</p>
+                                        <h1>{{ job_post.title }}</h1>
+                                        <p>{{ job_post.company_name }}</p>
                                         <p>Date Posted</p>
                                             <a href="{{ user_profile.resume.url }}" target="_blank">
                                                 <input type="button" class="resume" value="View Job Ad">
