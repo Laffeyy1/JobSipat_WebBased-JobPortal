@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SignUp</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/signup-2-style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://kit.fontawesome.com/8a0bbee573.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&family=Patua+One&family=Poppins:wght@500&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body>
+    <section>
+        <header>
+            <img class="logo" src="{% static 'img/JobPortal Logo Emblem.png' %}" alt="logo">
+        </header>
+        <div class="container">
+            <div class="containers">
+                <div class="container-skill">
+                    <span>Skills</span>
+                    <div class="autocomplete-container">
+                        <input type="text" id="skill-autocomplete-input" placeholder="Search for skills...">
+                        <div class="autocomplete-dropdown" id="skill-autocomplete-dropdown"></div>
+                    </div>
+                    <div class="tag" id="skill-tags-container"></div>
+                </div>
+                <div class="container-job">
+                    <span>Jobs</span>
+                    <div class="autocomplete-container">
+                        <input type="text" id="job-autocomplete-input" placeholder="Search for jobs...">
+                        <div class="autocomplete-dropdown" id="job-autocomplete-dropdown"></div>
+                    </div>
+                    <div class="tag" id="job-tags-container"></ion-icon></div>
+                </div>
+                <div class="container-submit">
+                    <form>
+                        <!-- Button trigger modal -->
+                        <button type="button" id="modal-btn" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            Submit
+                          </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              ...
+            </div>
+            <div class="modal-footer">
+              <button type="button" id="agree" class="btn btn-success">Understood</button>
+              <button type="button" id="cancel" class="btn btn-outline-danger" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    <script src="{% static 'js/skillsAndJobs.js' %}"></script>
+    <script src="{% static 'js/city.js' %}"></script>
+    <script>	
+        window.onload = function() {	
+        
+            // ---------------
+            // basic usage
+            // ---------------
+            var $ = new City();
+            $.showProvinces("#province");
+            $.showCities("#city");
+        
+            // ------------------
+            // additional methods 
+            // -------------------
+        
+            // will return all provinces 
+            console.log($.getProvinces());
+            
+            // will return all cities 
+            console.log($.getAllCities());
+            
+            // will return all cities under specific province (e.g Batangas)
+            console.log($.getCities("Batangas"));	
+            
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>

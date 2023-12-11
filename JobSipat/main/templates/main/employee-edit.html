@@ -25,16 +25,23 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="employee-jobs.html" class="nav-link">
+                            <a href="{% url 'employeeHome' %}" class="nav-link">
                                 <ion-icon name="briefcase-outline"></ion-icon>
                                 <span class="nav-text">Jobs</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="employee-notif.html" class="nav-link">
+                            <a href="{% url 'employeeNotif' %}" class="nav-link">
                                 <ion-icon name="notifications-outline"></ion-icon>
                                 <span class="nav-text">Notification</span>
                             </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="" class="nav-link">
+                                <ion-icon name="log-out-outline"></ion-icon>
+                                <span class="nav-text">Logout</span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -46,7 +53,10 @@
                         {% csrf_token %}
                         <div class="flex-edit">
                             <div class="edit">
-                            <span class="profile-edit">Edit Profile</span>
+                                <span class="profile-edit">Edit Profile</span>
+                                <div class="container-delete">
+                                    <input type="button" value="Delete Profile">
+                                </div>
                             </div>
                             
                             <div class="flex-edit-info">
@@ -116,12 +126,26 @@
                                 <div class="edit-info-container">
                                     <span class="edit-info-h1">Professional Experience</span>
                                     <div class="info-container">
-                                        <span class="edit-info-h2">Skills: </span>
-                                        {{ form.skills }}
+                                        <div class="container-skill">
+                                            <span class="edit-info-h2">Skills </span>
+                                            {{ form.skills }}
+                                                <div class="autocomplete-container">
+                                                    <input type="text" id="skill-autocomplete-input" placeholder="Search for skills...">
+                                                    <div class="autocomplete-dropdown" id="skill-autocomplete-dropdown"></div>
+                                                </div>
+                                                <div class="tags" id="skill-tags-container"></div>
+                                        </div>
                                     </div>
                                     <div class="info-container">
-                                        <span class="edit-info-h2">Field Of Experties: </span>
-                                        {{ form.field_of_expertise }}
+                                        <div class="container-job">
+                                            <span class="edit-info-h2">Field Of Experties: </span>
+                                            {{ form.field_of_expertise }}
+                                            <div class="autocomplete-container">
+                                                <input type="text" id="job-autocomplete-input" placeholder="Search for jobs...">
+                                                <div class="autocomplete-dropdown" id="job-autocomplete-dropdown"></div>
+                                            </div>
+                                            <div class="tags" id="job-tags-container"></ion-icon></div>
+                                        </div>
                                     </div>
                                     <div class="info-container">
                                         <span class="edit-info-h2">Change Resume: </span>
@@ -139,9 +163,9 @@
                         </div>
                             <div class="flex-button">
                                 <div class="edit-button-container">
-                                    <input type="submit" class="edit" value="Done"></input>
+                                    <input type="submit" class="finish" value="Done"></input>
                                     <a href="{% url 'employeeProfile' %}">
-                                        <button class="edit">Cancel</button>
+                                        <button class="finish">Cancel</button>
                                     </a>
                                 </div>
                             </div>
@@ -150,6 +174,32 @@
                 </div>
             </div>
         </div>
+        <script src="{% static 'js/skillsAndJobs.js' %}"></script>
+        <script>	
+            window.onload = function() {	
+            
+                // ---------------
+                // basic usage
+                // ---------------
+                var $ = new City();
+                $.showProvinces("#province");
+                $.showCities("#city");
+            
+                // ------------------
+                // additional methods 
+                // -------------------
+            
+                // will return all provinces 
+                console.log($.getProvinces());
+                
+                // will return all cities 
+                console.log($.getAllCities());
+                
+                // will return all cities under specific province (e.g Batangas)
+                console.log($.getCities("Batangas"));	
+                
+            }
+        </script>
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js@4.0.1/dist/chart.umd.min.js"></script>

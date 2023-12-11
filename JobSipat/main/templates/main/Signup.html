@@ -31,14 +31,29 @@
                             {% csrf_token %}
                             <label>First Name</label><br>
                             {{ form.first_name }}
+                                <div class="error">
+                                    <span>The name should only contain characters</span>
+                                </div>
                             <label>Last Name</label><br>
                             {{ form.last_name }}
+                                <div class="error">
+                                    <span>The name should only contain characters</span>
+                                </div>
                             <label>Userame</label><br>
                             {{ form.username }}
+                                <div class="error">
+                                    <span>Username is taken</span>
+                                </div>
                             <label>Email</label><br>
                             {{ form.email }}
+                                <div class="error">
+                                    <span>Invalid Email</span>
+                                </div>
                             <label>Phone Number</label><br>
                             {{ form.phone_number }}
+                                <div class="error">
+                                    <span>Invalid Number</span>
+                                </div>
                             <label>Province</label><br>
                             {{ form.province }}
                             <label>Municipality</label><br>
@@ -49,6 +64,9 @@
                             {{ form.password }}
                             <label>Confirm Password</label><br>
                             {{ form.confirm_password }}
+                                <div class="error">
+                                    <span>Password do not match</span>
+                                </div>
                             <div class="check-container">
                                 <input type="checkbox" class="check">
                                 <p>I agree with all the <span>Terms</span>, <span>Privacy Policy</span> and <span>Fees</span></p>

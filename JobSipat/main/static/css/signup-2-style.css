@@ -1,0 +1,214 @@
+
+*
+{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Century Gothic;
+    letter-spacing: 1px;
+}
+li, a {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: black;
+    text-decoration: none;
+}
+
+body {
+    background: linear-gradient(70deg, #bd2828, #f6bd60);
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+
+}
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 10px 0px 0px;
+}
+
+.logo {
+    max-width: 10% ;
+    height: auto;
+    cursor: pointer;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    height: fit-content;
+    width: 100%;
+}
+
+.containers{
+    display: grid;
+    width: 37rem;
+    height: fit-content;
+    margin:  0 0 50px 0;
+    padding: 50px;
+
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0px 0px 20px 1px rgba(0,0,0,0.2);
+}
+.container-skill{
+    display: grid;
+}
+.container-job{
+    display: grid;
+}
+.container-skill span,
+.container-job span{
+    margin: 0 0 0 10px;
+}
+.container-submit{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 20px 0 0;
+}
+.submit{
+    padding: 5px 15px;
+
+    border-radius: 5px;
+    border: none;
+    color: #fff;
+    background: #bd2828;
+}
+
+.logo {
+    max-width: 10% ;
+    height: auto;
+    cursor: pointer;
+}
+
+/* Style for the tags */
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+.tag {
+    background: linear-gradient(70deg, #bd2828, #f6bd60);
+    color: #fff;
+    padding: 5px 10px;
+    margin: 5px;
+    border-radius: 3px;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+.tag::before {
+    content: "\00D7"; /* Unicode for a bullet point (you can replace this with your icon) */
+    display: none; /* Initially hide the icon */
+}
+  
+.tag:hover::before {
+    display: inline-block;
+    margin-right: 8px;
+    color: #fff;
+}
+
+  /* Style for the autocomplete container */
+.autocomplete-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+  /* Style for the autocomplete input field */
+#skill-autocomplete-input {
+    width: 30rem;
+    height: 2rem;
+    padding: 10px;
+    margin: 0 0 10px;
+    font-size: 16px;
+    border: solid 1px #000;
+    border-radius: 5px;
+}
+
+#job-autocomplete-input {
+    width: 30rem;
+    height: 2rem;
+    padding: 10px;
+    font-size: 16px;
+    border: solid 1px #000;
+    border-radius: 5px;
+}
+
+  /* Style for the autocomplete dropdown */
+.autocomplete-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: none;
+}
+
+  /* Style for the autocomplete dropdown items */
+.autocomplete-item {
+    padding: 10px;
+    cursor: pointer;
+    background-color: #f9f9f9;
+    border-bottom: 1px solid #ddd;
+}
+
+.autocomplete-item:hover {
+    background-color: #e0e0e0;
+}
+
+.job-description {
+    font-size: 14px;
+    color: #666;
+}
+
+#job-tags-container {
+    margin-top: 20px;
+}
+
+#job-tags-container {
+    margin-top: 20px;
+}
+
+#toggle{
+    visibility: hidden;
+    opacity: 0;
+    position: relative;
+    z-index: -1;
+}
+  
+#toggle:checked ~ dialog {
+    display: block;
+}
+  
+label{
+    background: skyblue;
+    color: white;
+    padding: .5em 1em;
+    border-radius: 4px;
+}
+@keyframes appear {
+    0%{
+      opacity: 10;
+      transform: translateY(-10px);
+    }
+}
+
+.container-modal{
+    background: #fff;
+    position: fixed;
+    top: 50%;
+    left: 37%;
+    width: 1000px;
+    animation: appear 350ms ease-in 1;
+}
+
+#modal-btn{
+    background: #bd2828 !important;
+    color: #fff !important;
+}

@@ -8,11 +8,14 @@ urlpatterns = [
 path("", views.index, name="index"),
 path("login/", views.index, name="login"),
 path("signup/", views.signup, name="signup"),
+path("signup2/", views.signupPopup, name="signup2"),
 path("home/", views.employeeHome, name="employeeHome"), 
 path("profile/", views.employeeProfile, name="employeeProfile"), 
 path("notif/", views.employeeNotif, name="employeeNotif"), 
 path("edit/", views.employeeEdit, name="employeeEdit"),
 path("logout/", views.logout_view, name="logout"),
+path("listuser/", views.adminListUser, name="adminListUser"),
+path("listactivity/", views.adminListActivity, name="adminListActivity"),
 ]
 
 if settings.DEBUG:

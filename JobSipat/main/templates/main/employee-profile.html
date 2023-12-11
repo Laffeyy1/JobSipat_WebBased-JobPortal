@@ -36,6 +36,12 @@
                                 <span class="nav-text">Notification</span>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="" class="nav-link">
+                                <ion-icon name="log-out-outline"></ion-icon>
+                                <span class="nav-text">Logout</span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -95,10 +101,12 @@
                                 <span class="profile-info-h1">Professional Experience</span>
                                 <div class="info-container">
                                     <span class="profile-info-h2">Skills: </span>
+                                    <div class="tags" id="job-tags-container"><p class="tag">Java</p></ion-icon></div>
                                     <span class="profile-info">{{ user_profile.skills }}</span>
                                 </div>
                                 <div class="info-container">
                                     <span class="profile-info-h2">Field Of Experties: </span>
+                                    <div class="tags" id="job-tags-container"><p class="tag">UI UX</p></ion-icon></div>
                                     <span class="profile-info">{{ user_profile.field_of_expertise }}</span>
                                 </div>
                                 {% if user_profile.resume %}

@@ -160,3 +160,13 @@ def employeeEdit(request):
         })
 
     return render(request, "main/employee-edit.html", {'form': form})
+
+def signupPopup(request):
+    return render(request,"main/Signup-second.html")
+
+def adminListUser(request):
+    return render(request,"main/admin-list-user.html")
+
+def adminListActivity(request):
+    return render(request,"main/admin-list-activity.html")
+

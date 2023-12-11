@@ -237,6 +237,21 @@ ul{
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
 }
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+.tag {
+    background: linear-gradient(70deg, #bd2828, #f6bd60);
+    color: #fff;
+    height: 20px;
+    padding: 5px 10px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
 .resume{
     margin: 20px 0 0;
     padding: 10px;
