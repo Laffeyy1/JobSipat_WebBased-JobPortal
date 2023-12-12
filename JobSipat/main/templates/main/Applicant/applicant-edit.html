@@ -8,6 +8,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <script src="https://kit.fontawesome.com/8a0bbee573.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&family=Patua+One&family=Poppins:wght@500&display=swap" rel="stylesheet">
+    <script>
+        const csrfToken = "{{ csrf_token }}";
+    </script>
     </head>
     <body>
         <div class="main-container">
@@ -19,19 +22,19 @@
                     </div>
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a href="{% url 'employeeProfile' %}" class="nav-link">
+                            <a href="{% url 'applicantProfile' %}" class="nav-link">
                                 <ion-icon name="person-circle-outline"></ion-icon>
                                 <span class="nav-text">Profile</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{% url 'employeeHome' %}" class="nav-link">
+                            <a href="{% url 'applicantHome' %}" class="nav-link">
                                 <ion-icon name="briefcase-outline"></ion-icon>
                                 <span class="nav-text">Jobs</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{% url 'employeeNotif' %}" class="nav-link">
+                            <a href="{% url 'applicantNotif' %}" class="nav-link">
                                 <ion-icon name="notifications-outline"></ion-icon>
                                 <span class="nav-text">Notification</span>
                             </a>
@@ -49,7 +52,7 @@
             <div class="right-container">
                 
                 <div class="edit-container">
-                    <form action="{% url 'employeeEdit' %}" method="post" enctype="multipart/form-data">
+                    <form method="post" enctype="multipart/form-data">
                         {% csrf_token %}
                         <div class="flex-edit">
                             <div class="edit">
@@ -128,20 +131,20 @@
                                     <div class="info-container">
                                         <div class="container-skill">
                                             <span class="edit-info-h2">Skills </span>
-                                            {{ form.skills }}
-                                                <div class="autocomplete-container">
-                                                    <input type="text" id="skill-autocomplete-input" placeholder="Search for skills...">
-                                                    <div class="autocomplete-dropdown" id="skill-autocomplete-dropdown"></div>
-                                                </div>
-                                                <div class="tags" id="skill-tags-container"></div>
+                                            <div class="autocomplete-container">
+                                                {{ form.skills }}
+                                                <input type="text" id="skill-autocomplete-input" placeholder="Search for skills...">
+                                                <div class="autocomplete-dropdown" id="skill-autocomplete-dropdown"></div>
+                                            </div>
+                                            <div class="tags" id="skill-tags-container"></div>
                                         </div>
                                     </div>
                                     <div class="info-container">
                                         <div class="container-job">
                                             <span class="edit-info-h2">Field Of Experties: </span>
-                                            {{ form.field_of_expertise }}
                                             <div class="autocomplete-container">
-                                                <input type="text" id="job-autocomplete-input" placeholder="Search for jobs...">
+                                                {{ form.field_of_expertise }}
+                                                <input type="text" id="job-autocomplete-input" placeholder="Search for skills...">
                                                 <div class="autocomplete-dropdown" id="job-autocomplete-dropdown"></div>
                                             </div>
                                             <div class="tags" id="job-tags-container"></ion-icon></div>
@@ -162,9 +165,10 @@
                             </div>
                         </div>
                             <div class="flex-button">
+                                {{ form.errors }}
                                 <div class="edit-button-container">
                                     <input type="submit" class="finish" value="Done"></input>
-                                    <a href="{% url 'employeeProfile' %}">
+                                    <a href="{% url 'applicantProfile' %}">
                                         <button class="finish">Cancel</button>
                                     </a>
                                 </div>

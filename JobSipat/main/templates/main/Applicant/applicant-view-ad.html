@@ -16,25 +16,25 @@
             <div class="flex-container">
                 <div class="popup-nav">
                     <div class="logo">
-                        <img src="JobPortal Logo Emblem.png" alt="Cosmedic">
+                        <img src="{% static 'img/JobPortal Logo Emblem.png' %}" alt="Cosmedic">
                     </div>
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a href="{% url 'companyProfile' %}" class="nav-link">
+                            <a href="{% url 'applicantProfile' %}" class="nav-link">
                                 <ion-icon name="person-circle-outline"></ion-icon>
                                 <span class="nav-text">Profile</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{% url 'companyJobOffers' %}" class="nav-link">
+                            <a href="{% url 'applicantHome' %}" class="nav-link">
                                 <ion-icon name="briefcase-outline"></ion-icon>
-                                <span class="nav-text">Job Offers</span>
+                                <span class="nav-text">Jobs</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{% url 'companyPostAd' %}" class="nav-link">
+                            <a href="{% url 'applicantNotif' %}" class="nav-link">
                                 <ion-icon name="notifications-outline"></ion-icon>
-                                <span class="nav-text">Post Job Ad</span>
+                                <span class="nav-text">Notification</span>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -57,15 +57,13 @@
                         <div class="name">
                             <div class="top-design"></div>
                             <div class="pic-container">
-                                <div class="profile-pic pic">
-                                    <style>
-                                        .pic{
-                                            background-image: url(accenture-dp.jpg);
-                                        }
-                                    </style>
-                                </div>
+                                {% if job_post.profile.profile_pic %}
+                                    <img class="profile-pic pic" src="{{ job_post.profile.profile_pic.url }}" alt="Profile Picture">
+                                {% else %}
+                                    <ion-icon name="person-sharp" class="picture"></ion-icon>
+                                {% endif %}
                             </div>
-                            <span class="profile-name">Job Ad Title</span>
+                            <span class="profile-name">{{ job_post.title }}</span>
                         </div>
 
 
@@ -74,19 +72,19 @@
                                 <span class="profile-info-h1">Job Ad Overview</span>
                                 <div class="info-container">
                                     <span class="profile-info-h2">Company Name: </span>
-                                    <span class="profile-info">Accenture</span>
+                                    <span class="profile-info">{{ job_post.company_name }}</span>
                                 </div>
                                 <div class="info-container">
                                     <span class="profile-info-h2">Job Position: </span>
-                                    <span class="profile-info">System Analyst</span>
+                                    <span class="profile-info">{{ job_post.job_position }}</span>
                                 </div>
                                 <div class="info-container">
                                     <span class="profile-info-h2">Employment Type: </span>
-                                    <span class="profile-info">Full-time</span>
+                                    <span class="profile-info">{{ job_post.employment_type }}</span>
                                 </div>
                                 <div class="info-container">
                                     <span class="profile-info-h2">Salary Offer: </span>
-                                    <span class="profile-info">20-30k</span>
+                                    <span class="profile-info">₱{{ job_post.salary_offer }}/month</span>
                                 </div>
 
                             </div>
@@ -94,42 +92,44 @@
                                 <span class="profile-info-h1">Nature of the Job</span>
                                 <div class="info-container">
                                     <span class="profile-info-h2">Primary Duties and Responsibilities: </span>
-                                    <span class="profile-info">Analyzing System
-                                    </span>
+                                    <span class="profile-info">{{ job_post.primary_duties }}</span>
                                 </div>
                                 <div class="info-container">
                                     <span class="profile-info-h2">Job Description: </span>
-                                    <span class="profile-info">u need dis and dat</span>
+                                    {% for field_of_expertise in job_post.field_of_expertise.all %}
+                                        <p class="tag">{{ field_of_expertise.name }}</p>
+                                    {% endfor %}
+                                    <span class="profile-info">{{ job_post.job_description }}</span>
                                 </div>
                                 <div class="info-container">
                                     <span class="profile-info-h2">Skills Required: </span>
-                                    <span class="profile-info">u do dis and dat</span>
+                                    <span class="profile-info"></span>
+                                    <div class="tags" id="job-tags-container">
+                                        {% for skill_recommended in job_post.skills_recommended.all %}
+                                            <p class="tag">{{ skill_recommended.name }}</p>
+                                        {% endfor %}
+                                    </div>
                                 </div>
-                                <a href="derma-profile.html">
-                                    <input type="submit" class="resume" value="View Resume"></input>
-                                </a>
                             </div>
                         </div>
-
                         <div class="contact-container">
                             <ul>
                                 <li>
                                     <span class="icon"><i class="fa fa-phone" aria-hidden="true"></i>
                                     </span>
                                     <span class="text">Contact Number</span>
-                                    <span class="text">+6566778139</span>
+                                    <span class="text">+{{ job_post.profile.phone_number }}</span>
                                 </li>
                                 <li>
                                     <span class="icon"><i class="fa fa-envelope" aria-hidden="true"></i>
                                     </span>
-                                    <span class="text">Website</span>
-                                    <a href="http://bit.ly/accenturetechphcareers">http://bit.ly/accenturetechphcareers</a>
+                                    <span class="text">Email: </span>
+                                    <span class="text">{{ job_post.profile.user.email }}</span>
                                 </li>
                                 <li>
                                     <span class="icon"><i class="fa fa-home" aria-hidden="true"></i></span>
-                                    <span class="text">Address</span>
-                                    <span class="text">250 North Bridge Road, #35-00 Raffles City Tower 179101 Singapore
-                                    </span>
+                                    <span class="text">Address: </span>
+                                    <span class="text">{{ job_post.profile.address }}</span>                                    </span>
                                 </li>
                              </ul>
                         </div>

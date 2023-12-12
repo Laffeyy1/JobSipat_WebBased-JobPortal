@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
+from .models import Profile,Skill,Field_of_Expertise
 
 class LoginForm(forms.Form):
     username_or_email = forms.CharField(widget=forms.TextInput(attrs={
@@ -16,63 +17,6 @@ class LoginForm(forms.Form):
     }), label="")
 
 class SignupForm(forms.Form):
-    first_name = forms.CharField(widget=forms.TextInput(attrs={
-        "class": "name",
-        "type": "text",
-        "placeholder": "First Name"
-    }))
-    
-    last_name = forms.CharField(widget=forms.TextInput(attrs={
-        "class": "name",
-        "type": "text",
-        "placeholder": "Last Name"
-    }))
-    
-    username = forms.CharField(max_length=30, widget=forms.TextInput(attrs={
-        "class": "name",
-        "type": "text",
-        "placeholder": "Username"
-    }))
-    
-    email = forms.EmailField(widget=forms.TextInput(attrs={
-        "class": "email",
-        "type": "text",
-        "placeholder": "Email"
-    }))
-    
-    phone_number = forms.CharField(max_length=11, widget=forms.TextInput(attrs={
-        "class": "number",
-        "type": "text",
-        "placeholder": "+63*********"
-    }))
-    
-    province = forms.CharField(widget=forms.Select(attrs={
-        "class": "loc-derma",
-        "id": "province",
-    }))
-    
-    municipality = forms.CharField(widget=forms.Select(attrs={
-        "class": "loc-derma",
-        "id": "city",
-    }))
-    
-    user_type = forms.ChoiceField(choices=[('Applicant', 'Applicant'), ('Employer', 'Employer')], widget=forms.Select(attrs={
-        "class": "user-derma"
-    }))
-    
-    password = forms.CharField(widget=forms.PasswordInput(attrs={
-        "class": "pass",
-        "type": "password",
-        "placeholder": "Password"
-    }))
-    
-    confirm_password = forms.CharField(widget=forms.PasswordInput(attrs={
-        "class": "confirm",
-        "type": "password",
-        "placeholder": "Confirm Password"
-    }))
-
-class EditForm(forms.Form):
     first_name = forms.CharField(widget=forms.TextInput(attrs={
         "class": "name",
         "type": "text",
@@ -184,14 +128,6 @@ class EditForm(forms.Form):
     gender = forms.ChoiceField(choices=[('Male', 'Male'), ('Female', 'Female'), ('Other', 'Other')],
                                widget=forms.Select(attrs={"class": "edit-info1"}))
     
-    skills = forms.CharField(widget=forms.TextInput(attrs={
-        "class": "edit-info"
-    }))
-    
-    field_of_expertise = forms.CharField(widget=forms.TextInput(attrs={
-        "class": "edit-info"
-    }))
-
     resume = forms.FileField(widget=forms.FileInput(attrs={
         "class": "edit-info",
     }), required=False)
@@ -199,3 +135,7 @@ class EditForm(forms.Form):
     profile_pic = forms.ImageField(widget=forms.FileInput(attrs={
         "class": "edit-info",
     }), required=False)
+
+    skills = forms.ModelMultipleChoiceField(queryset=Skill.objects.all(), required=True)
+    
+    field_of_expertise = forms.ModelMultipleChoiceField(queryset=Field_of_Expertise.objects.all(), required=True)

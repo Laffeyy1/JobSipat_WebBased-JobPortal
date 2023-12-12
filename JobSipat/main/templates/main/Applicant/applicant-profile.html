@@ -19,19 +19,19 @@
                     </div>
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a href="{% url 'employeeProfile' %}" class="nav-link">
+                            <a href="{% url 'applicantProfile' %}" class="nav-link">
                                 <ion-icon name="person-circle-outline"></ion-icon>
                                 <span class="nav-text">Profile</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{% url 'employeeHome' %}" class="nav-link">
+                            <a href="{% url 'applicantHome' %}" class="nav-link">
                                 <ion-icon name="briefcase-outline"></ion-icon>
                                 <span class="nav-text">Jobs</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{% url 'employeeNotif' %}" class="nav-link">
+                            <a href="{% url 'applicantNotif' %}" class="nav-link">
                                 <ion-icon name="notifications-outline"></ion-icon>
                                 <span class="nav-text">Notification</span>
                             </a>
@@ -101,13 +101,19 @@
                                 <span class="profile-info-h1">Professional Experience</span>
                                 <div class="info-container">
                                     <span class="profile-info-h2">Skills: </span>
-                                    <div class="tags" id="job-tags-container"><p class="tag">Java</p></ion-icon></div>
-                                    <span class="profile-info">{{ user_profile.skills }}</span>
+                                    <div class="tags" id="job-tags-container">
+                                        {% for skill in user_profile.skills.all %}
+                                            <p class="tag">{{ skill.name }}</p>
+                                        {% endfor %}
+                                    </div>
                                 </div>
                                 <div class="info-container">
                                     <span class="profile-info-h2">Field Of Experties: </span>
-                                    <div class="tags" id="job-tags-container"><p class="tag">UI UX</p></ion-icon></div>
-                                    <span class="profile-info">{{ user_profile.field_of_expertise }}</span>
+                                    <div class="tags" id="job-tags-container">
+                                        {% for field_of_expertise in user_profile.field_of_expertise.all %}
+                                            <p class="tag">{{ field_of_expertise.name }}</p>
+                                        {% endfor %}
+                                    </div>
                                 </div>
                                 {% if user_profile.resume %}
                                     <a href="{{ user_profile.resume.url }}" target="_blank">
@@ -141,7 +147,7 @@
                     </div>
                     <div class="flex-edit">
                         <div class="edit-container">
-                            <a href="{% url 'employeeEdit' %}">
+                            <a href="{% url 'applicantEdit' %}">
                                 <button class="edit"><ion-icon name="settings-outline"></ion-icon>  Edit Profile</button>
                             </a>
                         </div>

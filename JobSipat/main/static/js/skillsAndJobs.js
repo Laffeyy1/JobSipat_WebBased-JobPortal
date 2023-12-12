@@ -103,7 +103,7 @@
       jobAutocompleteDropdown.style.display = results.length > 0 ? "block" : "none";
     }
 
-    // Add a skill tag to the skill tags container
+    // Add a skill tag to the skill tags container and save it to the Profile model
     function addSkillTag(skillValue) {
       const tagElement = document.createElement("div");
       tagElement.classList.add("tag");
@@ -112,25 +112,87 @@
         // Remove the skill tag when clicked
         skillTagsContainer.removeChild(tagElement);
         numberOfSkillTags--;
+
+        // Save the skill to the Profile model
+        saveSkillTag(skillValue);
       });
       skillTagsContainer.appendChild(tagElement);
       numberOfSkillTags++;
     }
 
-    // Add a job tag to the job tags container
-    function addJobTag(jobValue) {
-      const tagElement = document.createElement("div");
-      tagElement.classList.add("tag");
-      tagElement.textContent = jobValue;
-      tagElement.addEventListener("click", function() {
-        // Remove the job tag when clicked
-        jobTagsContainer.removeChild(tagElement);
-        numberOfJobTags--;
-      });
-      jobTagsContainer.appendChild(tagElement);
-      numberOfJobTags++;
-    }
+// Add a job tag to the job tags container and save it to the Profile model
+function addJobTag(jobValue) {
+  const tagElement = document.createElement("div");
+  tagElement.classList.add("tag");
+  tagElement.textContent = jobValue;
+  tagElement.addEventListener("click", function() {
+    // Remove the job tag when clicked
+    jobTagsContainer.removeChild(tagElement);
+    numberOfJobTags--;
 
+    // Save the job to the Profile model (you need to implement a similar function for jobs)
+    saveJobTag(jobValue);
+  });
+  jobTagsContainer.appendChild(tagElement);
+  numberOfJobTags++;
+}
+
+// Function to save a skill tag to the Profile model
+function saveSkillTag(skillValue) {
+  // You need to send an AJAX request to your Django server to save the skill to the Profile model
+  // Here's an example using fetch:
+  const csrfToken = getCSRFToken();  // Implement a function to get CSRF token
+  const url = '/edit/';  // Update the URL to your Django endpoint
+
+  fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-CSRFToken': csrfToken,
+    },
+    body: JSON.stringify({ skill: skillValue }),
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json();
+  })
+  .then(data => {
+    console.log('Skill tag saved successfully:', data);
+  })
+  .catch(error => {
+    console.error('Error saving skill tag:', error);
+  });
+}
+
+// Function to save a job tag to the Profile model
+function saveJobTag(jobValue) {
+  const csrfToken = getCSRFToken();  // Implement a function to get CSRF token
+  const url = '/edit/';  // Update the URL to your Django endpoint
+
+  fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-CSRFToken': csrfToken,
+    },
+    body: JSON.stringify({ job: jobValue }),
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json();
+  })
+  .then(data => {
+    console.log('Job tag saved successfully:', data);
+  })
+  .catch(error => {
+    console.error('Error saving job tag:', error);
+  });
+}
+    
     // Check if a skill tag already exists
     function isSkillTagExists(tagValue) {
       return Array.from(skillTagsContainer.children).some(tag => tag.textContent === tagValue);
