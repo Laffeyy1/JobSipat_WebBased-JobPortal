@@ -1,0 +1,211 @@
+{% load static %}
+<html>
+    <head>
+        <title>Dermatologist</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/employee-edit.css' %}">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://kit.fontawesome.com/8a0bbee573.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&family=Patua+One&family=Poppins:wght@500&display=swap" rel="stylesheet">
+    <script>
+        const csrfToken = "{{ csrf_token }}";
+    </script>
+    </head>
+    <body>
+        <div class="main-container">
+            <div class="header"></div>
+            <div class="flex-container">
+                <div class="popup-nav">
+                    <div class="logo">
+                        <img class="logo" src="{% static 'img/JobPortal Logo Emblem.png' %}" alt="logo">
+                    </div>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a href="{% url 'employerProfile' %}" class="nav-link">
+                                <ion-icon name="person-circle-outline"></ion-icon>
+                                <span class="nav-text">Profile</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'employerHome' %}" class="nav-link">
+                                <ion-icon name="briefcase-outline"></ion-icon>
+                                <span class="nav-text">Job Offers</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'employerPostAd' %}" class="nav-link">
+                                <ion-icon name="notifications-outline"></ion-icon>
+                                <span class="nav-text">Post Job Ad</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href=""  class="nav-link" data-toggle="modal" data-target="#logoutModal">
+                                <ion-icon name="log-out-outline"></ion-icon>
+                                <span class="nav-text">Logout</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="right-container">
+                
+                <div class="edit-container">
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="flex-edit">
+                            <div class="edit">
+                                <span class="profile-edit">Edit Profile</span>
+                                <div class="container-delete">
+                                    <input type="button" value="Delete Profile">
+                                </div>
+                            </div>
+                            
+                            <div class="flex-edit-info">
+                                <div class="edit-info-top">
+                                    <div class="info-top-right">
+                                        <span class="edit-info-h1">Personal Bio</span>
+                                        <div class="info-container">
+                                            <span class="edit-info-h2">First Name: </span>
+                                            {{ form.first_name }}
+                                        </div>
+                                        <div class="info-container">
+                                            <span class="edit-info-h2">Last Name: </span>
+                                            {{ form.last_name }}
+                                        </div>
+                                        <div class="info-container">
+                                            <span class="edit-info-h2">Address: </span>
+                                            {{ form.address }}
+                                        </div>
+                                        <div class="info-container">
+                                            <span class="edit-info-h2">Mobile Number: </span>
+                                            {{ form.phone_number }}
+                                        </div>
+                                        <div class="info-container">
+                                            <span class="edit-info-h2">Email: </span>
+                                            {{ form.email }}
+                                        </div> 
+                                    </div>
+                                    <div class="info-top-right">
+                                        <div class="profile-pic">
+                                            <span class="edit-info-h1" >Change Profile</span>
+                                            <div class="pic-container">
+                                                {% if form.profile_pic.value %}
+                                                    <img class="picture" src="{{ form.profile_pic.value.url }}" alt="Profile Picture">
+                                                {% else %}
+                                                    <ion-icon name="person-sharp" class="picture"></ion-icon>
+                                                {% endif %}
+                                            </div>
+                                            {{ form.profile_pic }}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flex-info-bottom">
+                                    <div class="edit-info-container">
+                                        <span class="edit-info-h1">Personal Bio</span>
+                                        <div class="info-container">
+                                            <span class="edit-info-h2">Birthday: </span>
+                                            {{ form.birthday }}
+                                        </div>
+                                        <div class="info-container">
+                                            <span class="edit-info-h2">Age: </span>
+                                            {{ form.age }}
+                                        </div>
+                                        <div class="info-container">
+                                            <span class="edit-info-h2">Citizenship: </span>
+                                            {{ form.citizenship }}
+                                        </div>
+                                        <div class="info-container">
+                                            <span class="edit-info-h2">Civil Status: </span>
+                                            {{ form.civil_status }}
+                                        </div>    
+                                        <div class="info-container">
+                                            <span class="edit-info-h2">Gender: </span>
+                                            {{ form.gender }}
+                                        </div>  
+                                    </div>
+                                <div class="edit-info-container">
+                                    <span class="edit-info-h1">Professional Experience</span>
+                                    <div class="info-container">
+                                        <div class="container-skill">
+                                            <span class="edit-info-h2">Skills </span>
+                                            <div class="autocomplete-container">
+                                                {{ form.skills }}
+                                                <input type="text" id="skill-autocomplete-input" placeholder="Search for skills...">
+                                                <div class="autocomplete-dropdown" id="skill-autocomplete-dropdown"></div>
+                                            </div>
+                                            <div class="tags" id="skill-tags-container"></div>
+                                        </div>
+                                    </div>
+                                    <div class="info-container">
+                                        <div class="container-job">
+                                            <span class="edit-info-h2">Field Of Experties: </span>
+                                            <div class="autocomplete-container">
+                                                {{ form.field_of_expertise }}
+                                                <input type="text" id="job-autocomplete-input" placeholder="Search for skills...">
+                                                <div class="autocomplete-dropdown" id="job-autocomplete-dropdown"></div>
+                                            </div>
+                                            <div class="tags" id="job-tags-container"></ion-icon></div>
+                                        </div>
+                                    </div>
+                                    <div class="info-container">
+                                        <span class="edit-info-h2">Change Resume: </span>
+                                        {% if form.resume.value %}
+                                            <a href="{{ form.resume.value.url }}" target="_blank">
+                                                <input type="button" class="resume" value="View Resume">
+                                            </a>
+                                        {% else %}
+                                            <p>No resume available.</p>
+                                        {% endif %}
+                                        {{ form.resume }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            <div class="flex-button">
+                                {{ form.errors }}
+                                <div class="edit-button-container">
+                                    <input type="submit" class="finish" value="Done"></input>
+                                    <a href="{% url 'applicantProfile' %}">
+                                        <button class="finish">Cancel</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <script src="{% static 'js/skillsAndJobs.js' %}"></script>
+        <script>	
+            window.onload = function() {	
+            
+                // ---------------
+                // basic usage
+                // ---------------
+                var $ = new City();
+                $.showProvinces("#province");
+                $.showCities("#city");
+            
+                // ------------------
+                // additional methods 
+                // -------------------
+            
+                // will return all provinces 
+                console.log($.getProvinces());
+                
+                // will return all cities 
+                console.log($.getAllCities());
+                
+                // will return all cities under specific province (e.g Batangas)
+                console.log($.getCities("Batangas"));	
+                
+            }
+        </script>
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@4.0.1/dist/chart.umd.min.js"></script>
+    </body>
+</html>

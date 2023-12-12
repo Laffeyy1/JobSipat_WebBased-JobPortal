@@ -17,29 +17,29 @@
             <div class="flex-container">
                 <div class="popup-nav">
                     <div class="logo">
-                        <img src="JobPortal Logo Emblem.png" alt="Cosmedic">
+                        <img src="{% static 'img/JobPortal Logo Emblem.png' %}" alt="Cosmedic">
                     </div>
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a href="{% url 'companyProfile' %}" class="nav-link">
+                            <a href="{% url 'employerProfile' %}" class="nav-link">
                                 <ion-icon name="person-circle-outline"></ion-icon>
                                 <span class="nav-text">Profile</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{% url 'companyJobOffers' %}" class="nav-link">
+                            <a href="{% url 'employerHome' %}" class="nav-link">
                                 <ion-icon name="briefcase-outline"></ion-icon>
                                 <span class="nav-text">Job Offers</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{% url 'companyPostAd' %}" class="nav-link">
+                            <a href="{% url 'employerPostAd' %}" class="nav-link">
                                 <ion-icon name="notifications-outline"></ion-icon>
                                 <span class="nav-text">Post Job Ad</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{% url 'logout' %}" class="nav-link" data-toggle="modal" data-target="#logoutModal">
+                            <a href=""  class="nav-link" data-toggle="modal" data-target="#logoutModal">
                                 <ion-icon name="log-out-outline"></ion-icon>
                                 <span class="nav-text">Logout</span>
                             </a>
@@ -86,49 +86,47 @@
                                     </style>
                                 </div>
                             </div>
-                            <span class="profile-name">Accenture</span>
+                            <span class="profile-name">Job Ad Title</span>
                         </div>
 
 
                         <div class="flex-personal-info">
                             <div class="peronal-info-container">
-                                <span class="profile-info-h1">Company Overview</span>
+                                <span class="profile-info-h1">Job Ad Overview</span>
                                 <div class="info-container">
-                                    <span class="profile-info-h2">Industry: </span>
-                                    <span class="profile-info">Information & Communication Technology</span>
+                                    <span class="profile-info-h2">Company Name: </span>
+                                    <span class="profile-info">Accenture</span>
                                 </div>
                                 <div class="info-container">
-                                    <span class="profile-info-h2">Company Size: </span>
-                                    <span class="profile-info"> More than 10,000 employees</span>
+                                    <span class="profile-info-h2">Job Position: </span>
+                                    <span class="profile-info">System Analyst</span>
                                 </div>
                                 <div class="info-container">
-                                    <span class="profile-info-h2">Primary Location: </span>
-                                    <span class="profile-info">Ground Floor, CG1 Recruitment Center, Cybergate Street, Mandaluyong City</span>
+                                    <span class="profile-info-h2">Employment Type: </span>
+                                    <span class="profile-info">Full-time</span>
                                 </div>
                                 <div class="info-container">
-                                    <span class="profile-info-h2">Website: </span>
-                                    <span class="profile-info">http://bit.ly/accenturetechphcareers</span>
-                                </div>
-                                <div class="info-container">
-                                    <span class="profile-info-h2">Contact Number: </span>
-                                    <span class="profile-info">+6566778139</span>
+                                    <span class="profile-info-h2">Salary Offer: </span>
+                                    <span class="profile-info">20-30k</span>
                                 </div>
 
                             </div>
                             <div class="peronal-exp-container">
-                                <span class="profile-info-h1">Life and Culture</span>
+                                <span class="profile-info-h1">Nature of the Job</span>
                                 <div class="info-container">
-                                    <span class="profile-info-h2">Perks and Benifits: </span>
-                                    <span class="profile-info">Medical, Dental, Miscellaneous allowance, and Employee Stock Purchase, Plan, Expanded Maternity
+                                    <span class="profile-info-h2">Primary Duties and Responsibilities: </span>
+                                    <span class="profile-info">Analyzing System
                                     </span>
                                 </div>
                                 <div class="info-container">
-                                    <span class="profile-info-h2">Why Join Us? </span>
-                                    <span class="profile-info">Your career is about what you want to do and who you want to be. It’s about bringing your skills, your curiosity and your best true self to work every day.
-                                        At Accenture, we collaborate with exceptional people across the globe, combining our ingenuity, industry expertise and the latest technology to deliver 360° value for our clients, people and communities.
-                                        Here, you can harness powerful change to make a world of difference!</span>
+                                    <span class="profile-info-h2">Job Description: </span>
+                                    <span class="profile-info">u need dis and dat</span>
                                 </div>
-                                <a href="{% url 'resume' %}">
+                                <div class="info-container">
+                                    <span class="profile-info-h2">Skills Required: </span>
+                                    <span class="profile-info">u do dis and dat</span>
+                                </div>
+                                <a href="derma-profile.html">
                                     <input type="submit" class="resume" value="View Resume"></input>
                                 </a>
                             </div>
@@ -139,15 +137,18 @@
                                 <li>
                                     <span class="icon"><i class="fa fa-phone" aria-hidden="true"></i>
                                     </span>
+                                    <span class="text">Contact Number</span>
                                     <span class="text">+6566778139</span>
                                 </li>
                                 <li>
                                     <span class="icon"><i class="fa fa-envelope" aria-hidden="true"></i>
                                     </span>
+                                    <span class="text">Website</span>
                                     <a href="http://bit.ly/accenturetechphcareers">http://bit.ly/accenturetechphcareers</a>
                                 </li>
                                 <li>
                                     <span class="icon"><i class="fa fa-home" aria-hidden="true"></i></span>
+                                    <span class="text">Address</span>
                                     <span class="text">250 North Bridge Road, #35-00 Raffles City Tower 179101 Singapore
                                     </span>
                                 </li>
@@ -157,8 +158,11 @@
 
                     <div class="flex-edit">
                         <div class="edit-container">
-                            <a href="{% url 'companyEdit' %}">
-                                <button class="edit"><ion-icon name="settings-outline"></ion-icon>  Edit Profile</button>
+                            <a href="{% static 'css/company-post-edit.css' %}">
+                                <button class="edit"> Edit Job</button>
+                            </a>
+                            <a>
+                                <button class="edit"> Activate / Deactivate</button>
                             </a>
                         </div>
                     </div>
@@ -166,7 +170,7 @@
             </div>
 
 
-            <script src="{% static 'js/logout.js' %}"></script>
+        <script src="{% static 'js/logout.js' %}"></script>
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 

@@ -18,29 +18,29 @@
                 <div class="flex-container">
                     <div class="popup-nav">
                         <div class="logo">
-                            <img src="JobPortal Logo Emblem.png" alt="Cosmedic">
+                            <img src="{% static 'img/JobPortal Logo Emblem.png' %}" alt="Cosmedic">
                         </div>
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a href="{% url 'companyProfile' %}" class="nav-link">
+                                <a href="{% url 'employerProfile' %}" class="nav-link">
                                     <ion-icon name="person-circle-outline"></ion-icon>
                                     <span class="nav-text">Profile</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{% url 'companyJobOffers' %}" class="nav-link">
+                                <a href="{% url 'employerHome' %}" class="nav-link">
                                     <ion-icon name="briefcase-outline"></ion-icon>
                                     <span class="nav-text">Job Offers</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{% url 'companyPostAd' %}" class="nav-link">
+                                <a href="{% url 'employerPostAd' %}" class="nav-link">
                                     <ion-icon name="notifications-outline"></ion-icon>
                                     <span class="nav-text">Post Job Ad</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{% url 'logout' %}" class="nav-link" data-toggle="modal" data-target="#logoutModal">
+                                <a href=""  class="nav-link" data-toggle="modal" data-target="#logoutModal">
                                     <ion-icon name="log-out-outline"></ion-icon>
                                     <span class="nav-text">Logout</span>
                                 </a>
@@ -63,7 +63,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                            <button type="button" class="btn btn-primary">Yes</button>
+                            <a href="{% url 'logout' %}"  type="button" class="btn btn-primary">Yes</a>
                         </div>
                     </div>
                     </div>
@@ -73,50 +73,54 @@
                     <div class="client-header">
                         <div class="client-flex">
                             <span>Jobs</span>
-                            <div class="client-flex-search">
-                                <div class="search-container">
-                                    <div class="client-flex">
-                                        <input type="text" placeholder="Job Title">
-                                        <button type="submit"><ion-icon name="search-outline"></ion-icon></button>
+                            <form method="get" action="{% url 'employerHome' %}">
+                                {% csrf_token %}
+                                <div class="client-flex-search">
+                                    <div class="search-container">
+                                        <div class="client-flex">
+                                            {{ form.job_title }}
+                                            <button type="submit"><ion-icon name="search-outline"></ion-icon></button>
+                                        </div>
+                                    </div>
+                                    <div class="search-container">
+                                        <div class="client-flex">
+                                            {{ form.skills }}
+                                            <button type="submit"><ion-icon name="search-outline"></ion-icon></button>
+                                        </div>
+                                    </div>
+                                    <div class="search-container">
+                                        <div class="client-flex">
+                                            {{ form.city }}
+                                            <button type="submit"><ion-icon name="search-outline"></ion-icon></button>
+                                        </div>
+                                    </div>
+                                    <div class="search-container">
+                                        <div class="client-flex">
+                                            {{ form.country }}
+                                            <button type="submit"><ion-icon name="search-outline"></ion-icon></button>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="search-container">
-                                    <div class="client-flex">
-                                        <input type="text" placeholder="Skills">
-                                        <button type="submit"><ion-icon name="search-outline"></ion-icon></button>
-                                    </div>
-                                </div>
-                                <div class="search-container">
-                                    <div class="client-flex">
-                                        <input type="text" placeholder="City">
-                                        <button type="submit"><ion-icon name="search-outline"></ion-icon></button>
-                                    </div>
-                                </div>
-                                <div class="search-container">
-                                    <div class="client-flex">
-                                        <input type="text" placeholder="Country">
-                                        <button type="submit"><ion-icon name="search-outline"></ion-icon></button>
-                                    </div>
-                                </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
 
                     <div class="profile-container">
                         <div class="grid-profile">
-                            <div class="name">
-                                <div class="top-design"></div>
-                                <div class="company-info">
-                                    <span class="company-name">{{ job_post.title }}</span>
+                            {% for job_post in job_posts %}
+                                <div class="name">
+                                    <div class="top-design"></div>
+                                    <div class="company-info">
+                                        <span class="company-name">{{ job_post.title }}</span>
                                         <span class="company-add">{{ job_post.company_name }}</span>
                                             <details class="accordion">
                                                 <summary class="accordion-btn">Company Job Details:</summary>
                                                 <div class="accordion-content">
                                                     <p></p>
-                                                    <p>{{ job_post.address }}</p>
-                                                    <p>{{ job_post.job_position }}</p>
-                                                    <p>{{ job_post.employment_type }}</p>
-                                                    <p>₱{{ job_post.salary_offer }}</p>
+                                                    <p>Location: {{ job_post.address }}</p>
+                                                    <p>Job Position: {{ job_post.job_position }}</p>
+                                                    <p>Type: {{ job_post.employment_type }}</p>
+                                                    <p>Salary: ₱{{ job_post.salary_offer }}/month</p>
                                                 </div>
                                             </details>
                                         <div class="peronal-info-container">
@@ -124,103 +128,28 @@
                                                 <summary class="accordion-btn">Job Description:</summary>
                                                 <div class="accordion-content">
                                                     <p></p>
-                                                    <p>{{ job_post.primary_duties }}</p>
-                                                    <p>{{ job_post.job_description }}</p>
-                                                    <p>{{ job_post.skills_recommended }}</p>
+                                                    <p>Primary Duties: {{ job_post.primary_duties }}</p>
+                                                    <p>Description: {{ job_post.job_description }}</p>
+                                                    <p>Recommended Skills:</p>
+                                                    <div class="tags" id="job-tags-container">
+                                                        {% for skill_recommended in job_post.skills_recommended.all %}
+                                                            <p class="tag">{{ skill_recommended.name }}</p>
+                                                        {% endfor %}
+                                                    </div>
                                                     <p>{{ job_post.created_at }}</p>
                                                 </div>
                                             </details>
                                         </div>
                                         <div class="flex-edit">
                                             <div class="edit-container">
-                                                <a href="{% static 'css/company-post-edit.css' %}">
-                                                    <button class="edit"> Edit Job</button>
-                                                </a>
-                                                <a>
-                                                    <button class="edit"> Activate / Deactivate</button>
+                                                <a href="{% url 'employerPostEdit' job_post.id %}">
+                                                    <button class="edit"><ion-icon name="open-outline"></ion-icon> Edit Job</button>
                                                 </a>
                                             </div>
                                         </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="name">
-                                <div class="top-design"></div>
-                                <div class="company-info">
-                                    <span class="company-name">{{ job_post.title }}</span>
-                                        <span class="company-add">{{ job_post.company_name }}</span>
-                                            <details class="accordion">
-                                                <summary class="accordion-btn">Company Job Details:</summary>
-                                                <div class="accordion-content">
-                                                    <p></p>
-                                                    <p>{{ job_post.address }}</p>
-                                                    <p>{{ job_post.job_position }}</p>
-                                                    <p>{{ job_post.employment_type }}</p>
-                                                    <p>₱{{ job_post.salary_offer }}</p>
-                                                </div>
-                                            </details>
-                                        <div class="peronal-info-container">
-                                            <details class="accordion">
-                                                <summary class="accordion-btn">Job Description:</summary>
-                                                <div class="accordion-content">
-                                                    <p></p>
-                                                    <p>{{ job_post.primary_duties }}</p>
-                                                    <p>{{ job_post.job_description }}</p>
-                                                    <p>{{ job_post.skills_recommended }}</p>
-                                                    <p>{{ job_post.created_at }}</p>
-                                                </div>
-                                            </details>
-                                        </div>
-                                        <div class="flex-edit">
-                                            <div class="edit-container">
-                                                <a href="{% static 'css/company-post-edit.css' %}">
-                                                    <button class="edit"> Edit Job</button>
-                                                </a>
-                                                <a>
-                                                    <button class="edit"> Activate / Deactivate</button>
-                                                </a>
-                                            </div>
-                                        </div>
-                                </div>
-                            </div>
-                            <div class="name">
-                                <div class="top-design"></div>
-                                <div class="company-info">
-                                    <span class="company-name">{{ job_post.title }}</span>
-                                        <span class="company-add">{{ job_post.company_name }}</span>
-                                            <details class="accordion">
-                                                <summary class="accordion-btn">Company Job Details:</summary>
-                                                <div class="accordion-content">
-                                                    <p></p>
-                                                    <p>{{ job_post.address }}</p>
-                                                    <p>{{ job_post.job_position }}</p>
-                                                    <p>{{ job_post.employment_type }}</p>
-                                                    <p>₱{{ job_post.salary_offer }}</p>
-                                                </div>
-                                            </details>
-                                        <div class="peronal-info-container">
-                                            <details class="accordion">
-                                                <summary class="accordion-btn">Job Description:</summary>
-                                                <div class="accordion-content">
-                                                    <p></p>
-                                                    <p>{{ job_post.primary_duties }}</p>
-                                                    <p>{{ job_post.job_description }}</p>
-                                                    <p>{{ job_post.skills_recommended }}</p>
-                                                    <p>{{ job_post.created_at }}</p>
-                                                </div>
-                                            </details>
-                                        </div>
-                                        <div class="flex-edit">
-                                            <div class="edit-container">
-                                                <a href="{% static 'css/company-post-edit.css' %}">
-                                                    <button class="edit"> Edit Job</button>
-                                                </a>
-                                                <a>
-                                                    <button class="edit"> Activate / Deactivate</button>
-                                                </a>
-                                            </div>
-                                        </div>
-                                </div>
-                            </div>
+                            {% endfor %}
                         </div>
 
                         <div class="recco">

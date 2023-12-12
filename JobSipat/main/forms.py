@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from .models import Profile,Skill,Field_of_Expertise
+from .models import Profile,Skill,Field_of_Expertise, Job_Post
 
 class LoginForm(forms.Form):
     username_or_email = forms.CharField(widget=forms.TextInput(attrs={
@@ -137,5 +137,42 @@ class EditForm(forms.Form):
     }), required=False)
 
     skills = forms.ModelMultipleChoiceField(queryset=Skill.objects.all(), required=True)
-    
+
     field_of_expertise = forms.ModelMultipleChoiceField(queryset=Field_of_Expertise.objects.all(), required=True)
+
+class JobSearchForm(forms.Form):
+    job_title = forms.CharField(required=False, widget=forms.TextInput(attrs={'placeholder': 'Job Title'}))
+    skills = forms.CharField(required=False, widget=forms.TextInput(attrs={'placeholder': 'Skills'}))
+    city = forms.CharField(required=False, widget=forms.TextInput(attrs={'placeholder': 'City'}))
+    country = forms.CharField(required=False, widget=forms.TextInput(attrs={'placeholder': 'Country'}))
+
+from django import forms
+from .models import Job_Post
+
+class JobPostForm(forms.ModelForm):
+    
+    field_of_expertise = forms.ModelMultipleChoiceField(
+        queryset=Field_of_Expertise.objects.all(),  # Replace with the actual queryset
+        widget=forms.CheckboxSelectMultiple,
+        required=False
+    )
+
+    skills_recommended = forms.ModelMultipleChoiceField(
+        queryset=Skill.objects.all(),  # Replace with the actual queryset
+        widget=forms.CheckboxSelectMultiple,
+        required=False
+    )
+
+    class Meta:
+        model = Job_Post
+        fields = ['title', 'company_name', 'job_position', 'address', 'employment_type', 'salary_offer', 'primary_duties', 'job_description', 'field_of_expertise', 'skills_recommended']
+
+    widgets = {
+        'title': forms.TextInput(attrs={'placeholder': 'Enter job title'}),
+        'company_name': forms.TextInput(attrs={'placeholder': 'Enter company name'}),
+        'job_position': forms.TextInput(attrs={'placeholder': 'Enter job position'}),
+        'address': forms.TextInput(attrs={'placeholder': 'Enter address'}),
+        'salary_offer': forms.TextInput(attrs={'placeholder': 'Enter salary offer'}),
+        'primary_duties': forms.Textarea(attrs={'placeholder': 'Enter primary duties and responsibilities'}),
+        'job_description': forms.Textarea(attrs={'placeholder': 'Enter job description'}),
+    }

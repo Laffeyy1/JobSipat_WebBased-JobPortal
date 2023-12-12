@@ -16,30 +16,30 @@
             <div class="flex-container">
                 <div class="popup-nav">
                     <div class="logo">
-                        <img src="JobPortal Logo Emblem.png" alt="Cosmedic">
+                        <img src="{% static 'img/JobPortal Logo Emblem.png' %}" alt="Cosmedic">
                     </div>
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a href="{% url 'companyProfile' %}" class="nav-link">
+                            <a href="{% url 'employerProfile' %}" class="nav-link">
                                 <ion-icon name="person-circle-outline"></ion-icon>
                                 <span class="nav-text">Profile</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{% url 'companyJobOffers' %}" class="nav-link">
+                            <a href="{% url 'employerHome' %}" class="nav-link">
                                 <ion-icon name="briefcase-outline"></ion-icon>
                                 <span class="nav-text">Job Offers</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{% url 'companyPostAd' %}" class="nav-link">
+                            <a href="{% url 'employerPostAd' %}" class="nav-link">
                                 <ion-icon name="notifications-outline"></ion-icon>
                                 <span class="nav-text">Post Job Ad</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="" class="nav-link">
-                                <ion-icon name="notifications-outline"></ion-icon>
+                            <a href=""  class="nav-link" data-toggle="modal" data-target="#logoutModal">
+                                <ion-icon name="log-out-outline"></ion-icon>
                                 <span class="nav-text">Logout</span>
                             </a>
                         </li>
