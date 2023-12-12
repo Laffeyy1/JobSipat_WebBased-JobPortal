@@ -18,6 +18,7 @@ path("applicantEdit/", views.employeeEdit, name="applicantEdit"),
 path("logout/", views.logout_view, name="logout"),
 path("listuser/", views.adminListUser, name="adminListUser"),
 path("listactivity/", views.adminListActivity, name="adminListActivity"),
+path("alertpage/", views.alertPage, name="alertPage"),
 ]
 
 if settings.DEBUG:
