@@ -354,3 +354,7 @@ def adminListUser(request):
 def adminListActivity(request):
     return render(request,"main/admin-list-activity.html")
 
+def alertPage(request):
+    return render(request,"main/alert-page.html")
+
+
