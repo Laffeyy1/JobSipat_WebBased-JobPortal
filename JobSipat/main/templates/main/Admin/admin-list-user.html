@@ -55,8 +55,8 @@
                 <div class="container-table">
                     
                     <div class="container-pdf">
-                        <div class="view-pdf">
-                            <ion-icon name="eye-outline"></ion-icon>
+                        <div class="create-user">
+                            <ion-icon name="create-outline"></ion-icon>
                             <a href="{% url 'create_user' %}" type="button">Create User</a>
                         </div>
                         <div class="view-pdf">
@@ -86,8 +86,14 @@
                             <td>{{ user.user.email }}</td>
                             <td>{{ user.user_type }}</td>
                             <td>
-                                <a href="{% url 'edit_user' user.user.id %}">Edit</a> |
-                                <a href="{% url 'delete_user' user.user.id %}">Delete</a>
+                                <div class="container-edit">
+                                    <div class="edit-btn">
+                                        <a href="{% url 'edit_user' user.user.id %}">Edit</a>
+                                    </div>
+                                    <div class="del-btn">
+                                        <a href="{% url 'delete_user' user.user.id %}">Delete</a>
+                                    </div>
+                                </div>
                               </td>
                         </tr>
                         {% endfor %}
