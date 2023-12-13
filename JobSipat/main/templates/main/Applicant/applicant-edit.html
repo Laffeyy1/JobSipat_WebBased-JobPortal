@@ -116,7 +116,7 @@
                                                 {% if form.profile_pic.value %}
                                                     <img class="picture" src="{{ form.profile_pic.value.url }}" alt="Profile Picture">
                                                 {% else %}
-                                                    <ion-icon name="person-sharp" class="picture"></ion-icon>
+                                                    <img class="profile-pic pic" src="{% static 'img/placeholder.png' %}" alt="Profile Picture">
                                                 {% endif %}
                                             </div>
                                             {{ form.profile_pic }}

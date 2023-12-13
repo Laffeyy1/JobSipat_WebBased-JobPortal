@@ -81,7 +81,7 @@
                                 {% if user_profile.profile_pic %}
                                     <img class="profile-pic pic" src="{{ user_profile.profile_pic.url }}" alt="Profile Picture">
                                 {% else %}
-                                    <ion-icon name="person-sharp" class="picture"></ion-icon>
+                                    <img class="profile-pic pic" src="{% static 'img/placeholder.png' %}" alt="Profile Picture">
                                 {% endif %}
                             </div>
                             <span class="profile-name">{{ user.username }}</span>
