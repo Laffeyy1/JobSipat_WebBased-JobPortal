@@ -20,7 +20,7 @@
             <div class="flex-container">
                 <div class="popup-nav">
                     <div class="logo">
-                        <img class="logo" src="{% static 'img/JobPortal Logo Emblem.png' %}" alt="logo">
+                        <img class="logo" src="{% static 'img/JobPortal Logo Emblem White-BG.png' %}" alt="logo">
                     </div>
                     <ul class="navbar-nav">
                         <li class="nav-item">
@@ -72,7 +72,7 @@
                 </div>
             </div>
             <div class="right-container">
-                
+
                 <div class="edit-container">
                     <form method="post" enctype="multipart/form-data">
                         {% csrf_token %}
@@ -83,7 +83,7 @@
                                     <input type="button" value="Delete Profile">
                                 </div>
                             </div>
-                            
+
                             <div class="flex-edit-info">
                                 <div class="edit-info-top">
                                     <div class="info-top-right">
@@ -107,7 +107,7 @@
                                         <div class="info-container">
                                             <span class="edit-info-h2">Email: </span>
                                             {{ form.email }}
-                                        </div> 
+                                        </div>
                                     </div>
                                     <div class="info-top-right">
                                         <div class="profile-pic">
@@ -142,11 +142,11 @@
                                         <div class="info-container">
                                             <span class="edit-info-h2">Civil Status: </span>
                                             {{ form.civil_status }}
-                                        </div>    
+                                        </div>
                                         <div class="info-container">
                                             <span class="edit-info-h2">Gender: </span>
                                             {{ form.gender }}
-                                        </div>  
+                                        </div>
                                     </div>
                                 <div class="edit-info-container">
                                     <span class="edit-info-h1">Professional Experience</span>
@@ -199,29 +199,29 @@
             </div>
         </div>
         <script src="{% static 'js/skillsAndJobs.js' %}"></script>
-        <script>	
-            window.onload = function() {	
-            
+        <script>
+            window.onload = function() {
+
                 // ---------------
                 // basic usage
                 // ---------------
                 var $ = new City();
                 $.showProvinces("#province");
                 $.showCities("#city");
-            
+
                 // ------------------
-                // additional methods 
+                // additional methods
                 // -------------------
-            
-                // will return all provinces 
+
+                // will return all provinces
                 console.log($.getProvinces());
-                
-                // will return all cities 
+
+                // will return all cities
                 console.log($.getAllCities());
-                
+
                 // will return all cities under specific province (e.g Batangas)
-                console.log($.getCities("Batangas"));	
-                
+                console.log($.getCities("Batangas"));
+
             }
         </script>
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
