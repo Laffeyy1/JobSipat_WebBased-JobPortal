@@ -146,9 +146,6 @@ class JobSearchForm(forms.Form):
     city = forms.CharField(required=False, widget=forms.TextInput(attrs={'placeholder': 'City'}))
     country = forms.CharField(required=False, widget=forms.TextInput(attrs={'placeholder': 'Country'}))
 
-from django import forms
-from .models import Job_Post
-
 class JobPostForm(forms.ModelForm):
     
     field_of_expertise = forms.ModelMultipleChoiceField(
@@ -176,3 +173,64 @@ class JobPostForm(forms.ModelForm):
         'primary_duties': forms.Textarea(attrs={'placeholder': 'Enter primary duties and responsibilities'}),
         'job_description': forms.Textarea(attrs={'placeholder': 'Enter job description'}),
     }
+
+class EditUserForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name', 'email']
+        widgets = {
+            'first_name': forms.TextInput(attrs={
+                "class": "info-top",
+                "type": "text",
+                "placeholder": "First Name"
+            }),
+            'last_name': forms.TextInput(attrs={
+                "class": "info-top",
+                "type": "text",
+                "placeholder": "Last Name"
+            }),
+            'email': forms.EmailInput(attrs={
+                "class": "info-top",
+                "type": "text",
+                "placeholder": "@gmail, @yahoo, @hotmail etc."
+            }),
+        }
+class EditProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['birthday', 'age', 'address', 'sex', 'current_company', 'field_of_expertise', 'skills', 'civil_status', 'citizenship', 'phone_number', 'province', 'municipality', 'user_type', 'profile_pic', 'resume']
+        widgets = {
+            'birthday': forms.TextInput(attrs={
+                "class": "edit-info1",
+                "type": "date",
+                "placeholder": "dd/mm/yyyy"
+            }),
+            'age': forms.TextInput(attrs={
+                "class": "edit-info",
+                "type": "text",
+                "placeholder": "Years old"
+            }),
+            'address': forms.TextInput(attrs={
+                "class": "edit-info",
+                "type": "text",
+                "placeholder": "Street, Block, City"
+            }),
+            'citizenship': forms.TextInput(attrs={
+                "class": "edit-info",
+                "type": "text",
+                "placeholder": "ex. Filipino"
+            }),
+            'phone_number': forms.TextInput(attrs={
+                "class": "edit-info",
+                "type": "text",
+                "placeholder": "ex. Filipino"
+            }),
+            'civil_status': forms.Select(attrs={"class": "edit-info1"}),
+            'sex': forms.Select(attrs={"class": "edit-info1"}),
+            'profile_pic': forms.FileInput(attrs={
+                "class": "edit-info",
+            }),
+            'resume': forms.FileInput(attrs={
+                "class": "edit-info",
+            }),
+        }

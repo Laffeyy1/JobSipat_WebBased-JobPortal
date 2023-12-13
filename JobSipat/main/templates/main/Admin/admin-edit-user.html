@@ -2,7 +2,6 @@
 <html>
     <head>
         <title>Dermatologist</title>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="{% static 'css/employee-edit.css' %}">
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,22 +22,21 @@
                     </div>
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a href="{% url 'applicantProfile' %}" class="nav-link">
+                            <a href="{% url 'employerProfile' %}" class="nav-link">
                                 <ion-icon name="person-circle-outline"></ion-icon>
                                 <span class="nav-text">Profile</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{% url 'applicantHome' %}" class="nav-link">
+                            <a href="{% url 'employerHome' %}" class="nav-link">
                                 <ion-icon name="briefcase-outline"></ion-icon>
-                                <span class="nav-text">Jobs</span>
+                                <span class="nav-text">Job Offers</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{% url 'applicantNotif' %}" class="nav-link">
+                            <a href="{% url 'employerPostAd' %}" class="nav-link">
                                 <ion-icon name="notifications-outline"></ion-icon>
-                                <span class="nav-text">Notification</span>
-                                <span class="nav-text">{{ unread_notification_count }}</span>
+                                <span class="nav-text">Post Job Ad</span>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -50,26 +48,7 @@
                     </ul>
                 </div>
             </div>
-
-            <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="logoutModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="logoutModalLabel">Logout</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                    Are you sure u want to log out?
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                        <a href="{% url 'logout' %}"  type="button" class="btn btn-primary">Yes</a>
-                    </div>
-                </div>
-                </div>
-            </div>
+            
             <div class="right-container">
                 
                 <div class="edit-container">
@@ -89,36 +68,35 @@
                                         <span class="edit-info-h1">Personal Bio</span>
                                         <div class="info-container">
                                             <span class="edit-info-h2">First Name: </span>
-                                            {{ form.first_name }}
+                                            {{ user_form.first_name }}
                                         </div>
                                         <div class="info-container">
                                             <span class="edit-info-h2">Last Name: </span>
-                                            {{ form.last_name }}
+                                            {{ user_form.last_name }}
                                         </div>
                                         <div class="info-container">
                                             <span class="edit-info-h2">Address: </span>
-                                            {{ form.address }}
+                                            {{ profile_form.address }}
                                         </div>
                                         <div class="info-container">
                                             <span class="edit-info-h2">Mobile Number: </span>
-                                            {{ form.phone_number }}
+                                            {{ profile_form.phone_number }}
                                         </div>
                                         <div class="info-container">
                                             <span class="edit-info-h2">Email: </span>
-                                            {{ form.email }}
+                                            {{ user_form.email }}
                                         </div> 
                                     </div>
                                     <div class="info-top-right">
                                         <div class="profile-pic">
                                             <span class="edit-info-h1" >Change Profile</span>
                                             <div class="pic-container">
-                                                {% if form.profile_pic.value %}
-                                                    <img class="picture" src="{{ form.profile_pic.value.url }}" alt="Profile Picture">
+                                                {% if profile_form.profile_pic.value %}
+                                                    <img class="picture" src="{{ profile_form.profile_pic.value.url }}" alt="Profile Picture">
                                                 {% else %}
                                                     <ion-icon name="person-sharp" class="picture"></ion-icon>
                                                 {% endif %}
                                             </div>
-                                            {{ form.profile_pic }}
                                         </div>
                                     </div>
                                 </div>
@@ -128,23 +106,23 @@
                                         <span class="edit-info-h1">Personal Bio</span>
                                         <div class="info-container">
                                             <span class="edit-info-h2">Birthday: </span>
-                                            {{ form.birthday }}
+                                            {{ profile_form.birthday }}
                                         </div>
                                         <div class="info-container">
                                             <span class="edit-info-h2">Age: </span>
-                                            {{ form.age }}
+                                            {{ profile_form.age }}
                                         </div>
                                         <div class="info-container">
                                             <span class="edit-info-h2">Citizenship: </span>
-                                            {{ form.citizenship }}
+                                            {{ profile_form.citizenship }}
                                         </div>
                                         <div class="info-container">
                                             <span class="edit-info-h2">Civil Status: </span>
-                                            {{ form.civil_status }}
+                                            {{ profile_form.civil_status }}
                                         </div>    
                                         <div class="info-container">
                                             <span class="edit-info-h2">Gender: </span>
-                                            {{ form.gender }}
+                                            {{ profile_form.sex }}
                                         </div>  
                                     </div>
                                 <div class="edit-info-container">
@@ -153,7 +131,7 @@
                                         <div class="container-skill">
                                             <span class="edit-info-h2">Skills </span>
                                             <div class="autocomplete-container">
-                                                {{ form.skills }}
+                                                {{ profile_form.skills }}
                                                 <input type="text" id="skill-autocomplete-input" placeholder="Search for skills...">
                                                 <div class="autocomplete-dropdown" id="skill-autocomplete-dropdown"></div>
                                             </div>
@@ -164,7 +142,7 @@
                                         <div class="container-job">
                                             <span class="edit-info-h2">Field Of Experties: </span>
                                             <div class="autocomplete-container">
-                                                {{ form.field_of_expertise }}
+                                                {{ profile_form.field_of_expertise }}
                                                 <input type="text" id="job-autocomplete-input" placeholder="Search for skills...">
                                                 <div class="autocomplete-dropdown" id="job-autocomplete-dropdown"></div>
                                             </div>
@@ -173,7 +151,7 @@
                                     </div>
                                     <div class="info-container">
                                         <span class="edit-info-h2">Change Resume: </span>
-                                        {% if form.resume.value %}
+                                        {% if profile_form.resume.value %}
                                             <a href="{{ form.resume.value.url }}" target="_blank">
                                                 <input type="button" class="resume" value="View Resume">
                                             </a>
@@ -186,7 +164,10 @@
                             </div>
                         </div>
                             <div class="flex-button">
-                                {{ form.errors }}
+                                {{ profile_form.province.as_hidden }}
+                                {{ profile_form.municipality.as_hidden }}
+                                {{ profile_form.user_type.as_hidden }}
+                                {{ profile_form.errors }}
                                 <div class="edit-button-container">
                                     <input type="submit" class="finish" value="Done"></input>
                                     <a href="{% url 'applicantProfile' %}">
@@ -228,8 +209,5 @@
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js@4.0.1/dist/chart.umd.min.js"></script>
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     </body>
 </html>

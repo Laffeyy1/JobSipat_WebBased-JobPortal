@@ -22,9 +22,18 @@ path("employerPostAd/", views.employerPostAd, name="employerPostAd"),
 path("employer/post/edit/<int:job_post_id>/", views.employerPostEdit, name="employerPostEdit"),
 path("employerProfile/", views.employerProfile, name="employerProfile"), 
 path("employerEdit/", views.employerEdit, name="employerEdit"), 
-
-path("listuser/", views.adminListUser, name="adminListUser"),
-path("listactivity/", views.adminListActivity, name="adminListActivity"),
+path("adminHome/", views.adminHome, name="adminHome"), 
+path('job_generate_pdf_report_view/', views.job_generate_pdf_report_view, name='job_generate_pdf_report_view'),
+path('job_generate_pdf_report/', views.job_generate_pdf_report, name='job_generate_pdf_report'),
+path("adminListUser/", views.adminListUser, name="adminListUser"), 
+path('edit_user/<int:user_id>/', views.edit_user, name='edit_user'),
+path('delete_user/<int:user_id>/', views.delete_user, name='delete_user'),
+path('create_user/', views.create_user, name='create_user'),
+path('generate_pdf_report/', views.user_generate_pdf_report, name='generate_pdf_report'),
+path('generate_pdf_report_view/', views.user_generate_pdf_report_view, name='generate_pdf_report_view'),
+path("adminlistActivity/", views.adminlistActivity, name="adminlistActivity"), 
+path('generate_activity_log_report_view/', views.generate_activity_log_report_view, name='generate_activity_log_report_view'),
+path('generate_activity_log_report/', views.generate_activity_log_report, name='generate_activity_log_report'),
 
 ]
 

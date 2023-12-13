@@ -3,6 +3,7 @@
     <head>
         <title>Home</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="{% static 'css/employee-jobs.css' %}">
 
         <link rel="icon" href="{% static 'img/JobPortal Logo Emblem.png' %}">
@@ -37,11 +38,12 @@
                                 <a href="{% url 'applicantNotif' %}" class="nav-link">
                                     <ion-icon name="notifications-outline"></ion-icon>
                                     <span class="nav-text">Notification</span>
+                                    <span class="nav-text">{{ unread_notification_count }}</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{% url 'logout' %}" class="nav-link">
-                                    <ion-icon name="notifications-outline"></ion-icon>
+                                <a href=""  class="nav-link" data-toggle="modal" data-target="#logoutModal">
+                                    <ion-icon name="log-out-outline"></ion-icon>
                                     <span class="nav-text">Logout</span>
                                 </a>
                             </li>
@@ -49,14 +51,58 @@
                     </div>
                 </div>
 
+                <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="logoutModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="logoutModalLabel">Logout</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                        Are you sure u want to log out?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                            <a href="{% url 'logout' %}"  type="button" class="btn btn-primary">Yes</a>
+                        </div>
+                    </div>
+                    </div>
+                </div>
                 <div class="right-container">
                     <div class="client-header">
                         <div class="client-flex">
                             <span>Jobs</span>
-                            <div class="search-container">
-                                <input type="text" placeholder="Search job interest here...">
-                                <button type="submit"><ion-icon name="search-outline"></ion-icon></button>
-                            </div>
+                            <form method="get">
+                                {% csrf_token %}
+                                <div class="client-flex-search">
+                                    <div class="search-container">
+                                        <div class="client-flex">
+                                            {{ form.job_title }}
+                                            <button type="submit"><ion-icon name="search-outline"></ion-icon></button>
+                                        </div>
+                                    </div>
+                                    <div class="search-container">
+                                        <div class="client-flex">
+                                            {{ form.skills }}
+                                            <button type="submit"><ion-icon name="search-outline"></ion-icon></button>
+                                        </div>
+                                    </div>
+                                    <div class="search-container">
+                                        <div class="client-flex">
+                                            {{ form.city }}
+                                            <button type="submit"><ion-icon name="search-outline"></ion-icon></button>
+                                        </div>
+                                    </div>
+                                    <div class="search-container">
+                                        <div class="client-flex">
+                                            {{ form.country }}
+                                            <button type="submit"><ion-icon name="search-outline"></ion-icon></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
 

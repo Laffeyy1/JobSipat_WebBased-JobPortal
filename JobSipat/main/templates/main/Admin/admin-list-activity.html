@@ -15,31 +15,31 @@
             <div class="flex-container">
                 <div class="popup-nav">
                     <div class="logo">
-                        <img class="logo" src="{% static 'img/JobPortal Logo Emblem White-BG.png' %}" alt="logo">
+                        <img src="{% static 'img/JobPortal Logo Mix.png' %}" alt="Cosmedic">
                     </div>
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a href="{% url 'adminListUser' %}" class="nav-link">
-                                <ion-icon name="person-circle-outline"></ion-icon>
-                                <p class="nav-text">User List</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{% url 'employeeHome' %}" class="nav-link">
+                            <a href="{% url 'adminHome' %}" class="nav-link">
                                 <ion-icon name="briefcase-outline"></ion-icon>
-                                <p class="nav-text">Job List</p>
+                                <span class="nav-text">Manage Jobs</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{% url 'adminListActivity' %}" class="nav-link">
+                            <a href="{% url 'adminListUser' %}" class="nav-link">
                                 <ion-icon name="notifications-outline"></ion-icon>
-                                <p class="nav-text">Activity Log</p>
+                                <span class="nav-text">Manage Users</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="" class="nav-link">
+                            <a href="{% url 'adminlistActivity' %}" class="nav-link">
+                                <ion-icon name="briefcase-outline"></ion-icon>
+                                <span class="nav-text">Activity Logs</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'logout' %}" class="nav-link" data-toggle="modal" data-target="#logoutModal">
                                 <ion-icon name="log-out-outline"></ion-icon>
-                                <p class="nav-text">Logout</p>
+                                <span class="nav-text">Logout</span>
                             </a>
                         </li>
                     </ul>
@@ -67,11 +67,11 @@
                         <div class="container-pdf">
                             <div class="view-pdf">
                                 <ion-icon name="eye-outline"></ion-icon>
-                                <input type="button" value="View PDF">
+                                <a href="{% url 'generate_activity_log_report_view' %}" target="_blank">View PDF</a>
                             </div>
                             <div class="download-pdf">
                                 <ion-icon name="arrow-down-circle-outline"></ion-icon>
-                                <input type="button" value="Print PDF">
+                                <a href="{% url 'generate_activity_log_report' %}" target="_blank">Print PDF</a>
                             </div>
                         </div>
                     </div>
@@ -79,30 +79,20 @@
                         <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">First</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Handle</th>
+                            <th scope="col">User</th>
+                            <th scope="col">Activity</th>
+                            <th scope="col">Timestamp</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td scope="row">1</td>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <td scope="row">2</td>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <td scope="row">3</td>
-                            <td>Larry the Bird</td>
-                            <td>Larry the Bird</td>
-                            <td>@twitter</td>
-                        </tr>
+                        {% for log in activity_logs %}
+                            <tr>
+                                <td>{{ forloop.counter }}</td>
+                                <td>{{ log.user.username }}</td>
+                                <td>{{ log.activity }}</td>
+                                <td>{{ log.timestamp }}</td>
+                            </tr>
+                        {% endfor %}
                         </tbody>
                     </table>
                 </div>

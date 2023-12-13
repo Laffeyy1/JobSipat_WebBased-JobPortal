@@ -99,9 +99,19 @@ class Job_Post(models.Model):
         return self.title
 
 class Job_Application(models.Model):
+    APPLIED = 'applied'
+    ACCEPTED = 'accepted'
+    REJECTED = 'rejected'
+
+    STATUS_CHOICES = [
+        (APPLIED, 'Applied'),
+        (ACCEPTED, 'Accepted'),
+        (REJECTED, 'Rejected'),
+    ]
+
     user = models.ForeignKey(User, on_delete=models.CASCADE, default=User.objects.first().id)
     job_post = models.ForeignKey(Job_Post, on_delete=models.CASCADE)
-    status = models.CharField(max_length=255)
+    status = models.CharField(max_length=255, choices=STATUS_CHOICES, default=APPLIED)
     timestamp = models.DateTimeField(auto_now_add=True)
 
 class Activity_Logs(models.Model):
@@ -109,3 +119,8 @@ class Activity_Logs(models.Model):
     activity = models.CharField(max_length=255)
     timestamp = models.DateTimeField(auto_now_add=True)
     
+class Notifications(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    notification = models.CharField(max_length=255)
+    timestamp = models.DateTimeField(auto_now_add=True)
+    read = models.BooleanField(default=False)
