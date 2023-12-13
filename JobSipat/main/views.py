@@ -19,8 +19,19 @@ from io import BytesIO
 from reportlab.lib import colors
 from datetime import datetime, timedelta
 from django.utils import timezone
+from django.contrib.auth.decorators import user_passes_test
 
 # Create your views here.
+
+def is_applicant(user):
+    return user.profile.user_type == 'Applicant' if hasattr(user, 'profile') else False
+
+def is_employer(user):
+    return user.profile.user_type == 'Employer' if hasattr(user, 'profile') else False
+
+def is_admin(user):
+    return user.profile.user_type == 'Admin' if hasattr(user, 'profile') else False
+
 
 def index(request):
     if request.method == 'POST':
@@ -95,6 +106,7 @@ def logout_view(request):
     return redirect('index')
 
 @login_required
+@user_passes_test(is_applicant, login_url='/unauthorized_access/')
 def applicantProfile(request):
     user_profile = None
     unread_notification_count = Notifications.objects.filter(user=request.user, read=False).count()
@@ -106,12 +118,14 @@ def applicantProfile(request):
     return render(request, "main/Applicant/applicant-profile.html", {'user_profile': user_profile, 'unread_notification_count': unread_notification_count})
 
 @login_required
+@user_passes_test(is_applicant, login_url='/unauthorized_access/')
 def applicantNotif(request):
     unread_notification_count = Notifications.objects.filter(user=request.user, read=False).count()
 
     return render(request, "main/Applicant/applicant-notif.html",{'unread_notification_count': unread_notification_count})
 
 @login_required
+@user_passes_test(is_applicant, login_url='/unauthorized_access/')
 def applicantHome(request):
     # Get all job posts
     job_posts = Job_Post.objects.all().order_by('-created_at')
@@ -158,6 +172,7 @@ def applicantHome(request):
 
 @csrf_exempt
 @login_required
+@user_passes_test(is_applicant, login_url='/unauthorized_access/')
 def applicantEdit(request):
     user = request.user
     user_profile = request.user.profile
@@ -213,6 +228,7 @@ def applicantEdit(request):
     return render(request, "main/Applicant/applicant-edit.html", {'form': form, 'unread_notification_count': unread_notification_count})
 
 @login_required
+@user_passes_test(is_applicant, login_url='/unauthorized_access/')
 def applicantViewJob(request, job_post_id):
     job_post = get_object_or_404(Job_Post, id=job_post_id)
     user = request.user
@@ -248,6 +264,7 @@ def applicantViewJob(request, job_post_id):
     )
 
 @login_required
+@user_passes_test(is_employer, login_url='/unauthorized_access/')
 def employerHome(request):
     # Get all job posts
     job_posts = Job_Post.objects.all().order_by('-created_at')
@@ -292,6 +309,7 @@ def employerHome(request):
     })
 
 @login_required
+@user_passes_test(is_employer, login_url='/unauthorized_access/')
 def employerPostAd(request):
     if request.method == 'POST':
         form = JobPostForm(request.POST)
@@ -326,6 +344,7 @@ def employerPostAd(request):
     return render(request, 'main/Employer/employer-post-ad.html', {'form': form})
 
 @login_required
+@user_passes_test(is_employer, login_url='/unauthorized_access/')
 def employerPostEdit(request, job_post_id):
     # Get the existing job post
     job_post = get_object_or_404(Job_Post, id=job_post_id)
@@ -341,6 +360,7 @@ def employerPostEdit(request, job_post_id):
     return render(request, 'main/Employer/employer-post-edit.html', {'form': form})
 
 @login_required
+@user_passes_test(is_employer, login_url='/unauthorized_access/')
 def employerProfile(request):
     user_profile = None
     if hasattr(request.user, 'profile'):
@@ -351,6 +371,7 @@ def employerProfile(request):
     return render(request,"main/Employer/employer-profile.html", {'user_profile': user_profile})
 
 @login_required
+@user_passes_test(is_employer, login_url='/unauthorized_access/')
 def employerEdit(request):
     user = request.user
     user_profile = request.user.profile
@@ -405,6 +426,7 @@ def employerEdit(request):
     return render(request,"main/Employer/employer-edit.html", {'form': form})
 
 @login_required
+@user_passes_test(is_admin, login_url='/unauthorized_access/')
 def adminHome(request):
     # Get all job posts
     job_posts = Job_Post.objects.all().order_by('-created_at')
@@ -459,11 +481,13 @@ def adminHome(request):
     })
 
 @login_required
+@user_passes_test(is_admin, login_url='/unauthorized_access/')
 def adminListUser(request):
     users = Profile.objects.all()
     return render(request, "main/Admin/admin-list-user.html", {'users': users})
 
 @login_required
+@user_passes_test(is_admin, login_url='/unauthorized_access/')
 def edit_user(request, user_id):
     user_profile = get_object_or_404(Profile, user__id=user_id)
 
@@ -482,6 +506,7 @@ def edit_user(request, user_id):
     return render(request, 'main/Admin/admin-edit-user.html', {'user_profile': user_profile, 'user_form': user_form, 'profile_form': profile_form})
 
 @login_required
+@user_passes_test(is_admin, login_url='/unauthorized_access/')
 def delete_user(request, user_id):
     user = get_object_or_404(Profile, user__id=user_id)
     user.user.delete()
@@ -489,6 +514,7 @@ def delete_user(request, user_id):
     return redirect('adminListUser')
 
 @login_required
+@user_passes_test(is_admin, login_url='/unauthorized_access/')
 def create_user(request):
     if request.method == 'POST':
         form = SignupForm(request.POST)
@@ -518,6 +544,7 @@ def create_user(request):
     return render(request, 'main/Admin/admin-create-user.html', {'form': form})
 
 @login_required
+@user_passes_test(is_admin, login_url='/unauthorized_access/')
 def user_generate_pdf_report(request):
     profiles = Profile.objects.all()
     buffer = BytesIO()
@@ -576,6 +603,7 @@ def user_generate_pdf_report(request):
     return response
 
 @login_required
+@user_passes_test(is_admin, login_url='/unauthorized_access/')
 def user_generate_pdf_report_view(request):
     profiles = Profile.objects.all()
     buffer = BytesIO()
@@ -628,6 +656,7 @@ def user_generate_pdf_report_view(request):
     return response
 
 @login_required
+@user_passes_test(is_admin, login_url='/unauthorized_access/')
 def job_generate_pdf_report_view(request):
     job_posts = Job_Post.objects.all()
     buffer = BytesIO()
@@ -695,6 +724,7 @@ def job_generate_pdf_report_view(request):
     return response
 
 @login_required
+@user_passes_test(is_admin, login_url='/unauthorized_access/')
 def job_generate_pdf_report(request):
     log_activity(request, "PDF Generate Job")
     job_posts = Job_Post.objects.all()
@@ -762,6 +792,7 @@ def job_generate_pdf_report(request):
     return response
 
 @login_required
+@user_passes_test(is_admin, login_url='/unauthorized_access/')
 def generate_activity_log_report_view(request):
     activity_logs = Activity_Logs.objects.all()
     buffer = BytesIO()
@@ -825,6 +856,7 @@ def generate_activity_log_report_view(request):
     return response
 
 @login_required
+@user_passes_test(is_admin, login_url='/unauthorized_access/')
 def generate_activity_log_report(request):
     activity_logs = Activity_Logs.objects.all()
     buffer = BytesIO()
@@ -887,6 +919,8 @@ def generate_activity_log_report(request):
 
     return response
 
+@login_required
+@user_passes_test(is_admin, login_url='/unauthorized_access/')
 def adminlistActivity(request):
     activity_logs = Activity_Logs.objects.all()
     return render(request, "main/Admin/admin-list-activity.html", {'activity_logs': activity_logs})
@@ -894,11 +928,11 @@ def adminlistActivity(request):
 def signupPopup(request):
     return render(request,"main/Signup-second.html")
 
-def alertPage(request):
-    return render(request,"main/alert-page.html")
-
 def log_activity(request, action):
     user = request.user if request.user.is_authenticated else None
     if user:
         activity_log = Activity_Logs(user=user, activity=action, timestamp=datetime.now())
         activity_log.save()
+
+def unauthorized_access(request):
+    return render(request,"main/alert-page.html")

@@ -6,6 +6,7 @@ from .views import applicantViewJob
 from . import views
 
 urlpatterns = [
+path('unauthorized_access/', views.unauthorized_access, name='unauthorized_access'),
 path("", views.index, name="index"),
 path("login/", views.index, name="login"),
 path("signup/", views.signup, name="signup"),
@@ -34,7 +35,6 @@ path('generate_pdf_report_view/', views.user_generate_pdf_report_view, name='gen
 path("adminlistActivity/", views.adminlistActivity, name="adminlistActivity"), 
 path('generate_activity_log_report_view/', views.generate_activity_log_report_view, name='generate_activity_log_report_view'),
 path('generate_activity_log_report/', views.generate_activity_log_report, name='generate_activity_log_report'),
-
 ]
 
 if settings.DEBUG:

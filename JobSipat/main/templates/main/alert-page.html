@@ -21,8 +21,8 @@
                     <h1>Sorry!</h1>
                     <p>You are not authorized to access this page. Please check your login credentials or contact the administrator fora access</p>
                     <div class="container-btn">
-                        <input type="button" value="Back to Home" class="home">
-                        <input type="button" value="Logout" class="logout">
+                        <a type="button" value="Back to Home" class="home" href="{% url 'index' %}">Home</a>
+                        <a type="button" value="Logout" class="logout" href="{% url 'logout' %}">Logout</a>
                     </div>
                 </div>
             </div>
