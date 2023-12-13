@@ -1,8 +1,9 @@
 {% load static %}
 <html>
     <head>
-        <title>Dermatologist</title>
+        <title>Edit Users</title>
         <link rel="stylesheet" type="text/css" href="{% static 'css/employee-edit.css' %}">
+        <link rel="icon" href="{% static 'img/JobPortal Logo Emblem White-BG.png' %}" type="image/icon type">
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -48,28 +49,9 @@
                     </ul>
                 </div>
             </div>
-
-            <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="logoutModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="logoutModalLabel">Logout</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                    Are you sure u want to log out?
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                        <a href="{% url 'logout' %}"  type="button" class="btn btn-primary">Yes</a>
-                    </div>
-                </div>
-                </div>
-            </div>
+            
             <div class="right-container">
-                
+
                 <div class="edit-container">
                     <form method="post" enctype="multipart/form-data">
                         {% csrf_token %}
@@ -80,7 +62,7 @@
                                     <input type="button" value="Delete Profile">
                                 </div>
                             </div>
-                            
+
                             <div class="flex-edit-info">
                                 <div class="edit-info-top">
                                     <div class="info-top-right">
@@ -104,7 +86,7 @@
                                         <div class="info-container">
                                             <span class="edit-info-h2">Email: </span>
                                             {{ user_form.email }}
-                                        </div> 
+                                        </div>
                                     </div>
                                     <div class="info-top-right">
                                         <div class="profile-pic">
@@ -113,7 +95,7 @@
                                                 {% if profile_form.profile_pic.value %}
                                                     <img class="picture" src="{{ profile_form.profile_pic.value.url }}" alt="Profile Picture">
                                                 {% else %}
-                                                    <ion-icon name="person-sharp" class="picture"></ion-icon>
+                                                    <img class="profile-pic pic" src="{% static 'img/placeholder.png' %}" alt="Profile Picture">
                                                 {% endif %}
                                             </div>
                                         </div>
@@ -138,11 +120,11 @@
                                         <div class="info-container">
                                             <span class="edit-info-h2">Civil Status: </span>
                                             {{ profile_form.civil_status }}
-                                        </div>    
+                                        </div>
                                         <div class="info-container">
                                             <span class="edit-info-h2">Gender: </span>
                                             {{ profile_form.sex }}
-                                        </div>  
+                                        </div>
                                     </div>
                                 <div class="edit-info-container">
                                     <span class="edit-info-h1">Professional Experience</span>
@@ -200,29 +182,29 @@
             </div>
         </div>
         <script src="{% static 'js/skillsAndJobs.js' %}"></script>
-        <script>	
-            window.onload = function() {	
-            
+        <script>
+            window.onload = function() {
+
                 // ---------------
                 // basic usage
                 // ---------------
                 var $ = new City();
                 $.showProvinces("#province");
                 $.showCities("#city");
-            
+
                 // ------------------
-                // additional methods 
+                // additional methods
                 // -------------------
-            
-                // will return all provinces 
+
+                // will return all provinces
                 console.log($.getProvinces());
-                
-                // will return all cities 
+
+                // will return all cities
                 console.log($.getAllCities());
-                
+
                 // will return all cities under specific province (e.g Batangas)
-                console.log($.getCities("Batangas"));	
-                
+                console.log($.getCities("Batangas"));
+
             }
         </script>
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>

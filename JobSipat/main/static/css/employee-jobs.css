@@ -149,6 +149,9 @@ main{
     font-size: 2rem;
 
 }
+.client-flex-search{
+    display: flex;
+}
 
 .search-container{
     display: flex;
@@ -156,6 +159,7 @@ main{
     width: 250px;
     height: 40px;
     padding: 0 10px;
+    margin: 15px 5px 0;
 
 
     background: #bd2828;
