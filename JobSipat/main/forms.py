@@ -136,9 +136,17 @@ class EditForm(forms.Form):
         "class": "edit-info",
     }), required=False)
 
-    skills = forms.ModelMultipleChoiceField(queryset=Skill.objects.all(), required=True)
+    skills = forms.ModelMultipleChoiceField(
+        queryset=Skill.objects.all(),
+        widget=forms.CheckboxSelectMultiple,
+        required=True
+    )
 
-    field_of_expertise = forms.ModelMultipleChoiceField(queryset=Field_of_Expertise.objects.all(), required=True)
+    field_of_expertise = forms.ModelMultipleChoiceField(
+        queryset=Field_of_Expertise.objects.all(),
+        widget=forms.CheckboxSelectMultiple,
+        required=True
+    )
 
 class JobSearchForm(forms.Form):
     job_title = forms.CharField(required=False, widget=forms.TextInput(attrs={'placeholder': 'Job Title'}))
@@ -165,7 +173,11 @@ class JobPostForm(forms.ModelForm):
         fields = ['title', 'company_name', 'job_position', 'address', 'employment_type', 'salary_offer', 'primary_duties', 'job_description', 'field_of_expertise', 'skills_recommended']
 
     widgets = {
-        'title': forms.TextInput(attrs={'placeholder': 'Enter job title'}),
+        'title': forms.TextInput(attrs={
+                "class": "info-top",
+                "type": "text",
+                "placeholder": "First Name"
+            }),
         'company_name': forms.TextInput(attrs={'placeholder': 'Enter company name'}),
         'job_position': forms.TextInput(attrs={'placeholder': 'Enter job position'}),
         'address': forms.TextInput(attrs={'placeholder': 'Enter address'}),
@@ -195,6 +207,7 @@ class EditUserForm(forms.ModelForm):
                 "placeholder": "@gmail, @yahoo, @hotmail etc."
             }),
         }
+
 class EditProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
