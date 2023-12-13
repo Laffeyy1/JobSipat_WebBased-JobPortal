@@ -120,8 +120,20 @@ main{
     display: block;
 }
 
-
-
+.filter{
+    display: flex;
+}
+.date-container{
+    display: flex;
+    align-items: center;
+    margin: 0 20px 0 0;
+}
+.date-container span{
+    width: 10rem;
+}
+.dropdown{
+    margin: 3px 0 0;
+}
 
 
 

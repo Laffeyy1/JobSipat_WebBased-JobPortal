@@ -2,10 +2,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Job Ads</title>
+        <title>Job List</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="{% static 'css/admin-jobs.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'css/admin-list-activity.css' %}">
+        <link rel="icon" href="{% static 'img/JobPortal Logo Emblem White-BG.png' %}" type="image/icon type">
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -109,18 +110,18 @@
                     <div class="container-table">
                         <div class="container-btn">
                             <div class="filter">
+                                <div class="date-container">
+                                    <span class="edit-info-h2">Date Posted: </span>
+                                    <input type="date"class="edit-info1" placeholder="dd/mm/yyyy"></input>
+                                </div>
                                 <div class="dropdown toggle">
-                                    <input id="t1" type="checkbox" checked>
+                                    <input id="t1" type="checkbox">
                                     <label for="t1">Sort By</label>
                                     <ul>
                                         <li><a href="?sort_by=Daily">Daily</a></li>
                                         <li><a href="?sort_by=Weekly">Weekly</a></li>
                                         <li><a href="?sort_by=Monthly">Monthly</a></li>
                                     </ul>
-                                </div>
-                                <div class="info-container">
-                                    <span class="edit-info-h2">Date Posted: </span>
-                                    <input type="date"class="edit-info1" placeholder="dd/mm/yyyy"></input>
                                 </div>
                             </div>
                             <div class="container-pdf">

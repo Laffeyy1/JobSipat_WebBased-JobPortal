@@ -44,7 +44,7 @@ main{
     padding: 0;
     background: blueviolet;
     transition: 2s;
-    
+
 }
 
 
@@ -58,7 +58,7 @@ main{
     transition: 1s ease;
 
     font-size: 1.2rem;
-    
+
 }
 
 .navbar-nav {
@@ -100,7 +100,7 @@ main{
     transition: 2s;
 }
 
-.nav-link p{
+.nav-text {
     display: none;
     margin-left: 5px;
 

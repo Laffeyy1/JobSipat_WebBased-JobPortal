@@ -44,7 +44,7 @@ main{
     padding: 0;
     background: blueviolet;
     transition: 2s;
-    
+
 }
 
 
@@ -58,7 +58,7 @@ main{
     transition: 1s ease;
 
     font-size: 1.2rem;
-    
+
 }
 
 .navbar-nav {
@@ -100,7 +100,7 @@ main{
     transition: 2s;
 }
 
-.nav-link p{
+.nav-text {
     display: none;
     margin-left: 5px;
 
@@ -157,6 +157,7 @@ main{
 .container-btn{
     display: flex;
     align-items: center;
+    justify-content: end;
 }
 .filter{
     margin: 5px 3px;
@@ -229,7 +230,7 @@ main{
     border-bottom: 10px solid #FFF;
     margin: -10px 0 0 30px;
   }
-  .dropdown a:hover, .dropdown.toggle > label:hover, .dropdown.toggle > input:checked ~ label {
+.dropdown.toggle > label:hover, .dropdown.toggle > input:checked ~ label {
     background-color: #EEE;
     color: #666;
   }
@@ -239,10 +240,10 @@ main{
   .dropdown li:first-child a:hover::before {
     border-bottom-color: #EEE;
   }
-  .dropdown.hover:hover li, .dropdown.toggle > input:checked ~ ul li {          
+.dropdown.toggle > input:checked ~ ul li {          
     height: 40px;
   }
-  .dropdown.hover:hover li:first-child, .dropdown.toggle > input:checked ~ ul li:first-child {
+.dropdown.toggle > input:checked ~ ul li:first-child {
     padding-top: 15px;
   }
   
@@ -254,15 +255,17 @@ main{
     width: 100%;
 }
 .view-pdf,
-.download-pdf{
+.download-pdf,
+.view-pdf a,
+.download-pdf a{
     display: flex;
     align-items: center;
     height: 30px;
     padding: 3px;
     margin: 3px;
+    text-decoration: none;
     border-radius: 5px;
     color: #fff;
-    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
 }
 .view-pdf{
     background: #2ECC71;
